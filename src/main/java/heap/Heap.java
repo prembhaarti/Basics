@@ -12,9 +12,10 @@ import java.util.List;
  *
  * Add: add element at end and bottom-up heapify
  * delete: 1. copy last element of heap to pos (root) which have to be deleted.
- *         2. do topDownHeapify : we are removing root, so swap root with last element, and decrease list size by 1
- *                                now, last element on root, check it's left and right child which is bigger,
- *                                swap root with it, and do it recursively every time check if child is in size limit
+ *         2. do topDownHeapify :
+ *            we are removing root, so swap root with last element, and decrease list size by 1
+ *            now, last element on root, check it's left and right child which is bigger,
+ *            swap root with it, and do it recursively every time check if child is in size limit
  *
  * Heap is a special case of balanced binary tree data structure
  * where the root-node key is compared with its children and arranged accordingly

@@ -32,7 +32,6 @@ import java.util.Map;
  *        if same then increment rank of one parent (parent1) and make parent2 child of parent1
  *      if not same then smaller parent rank will become child of greater rank parent
  *
- *
  *      application: kruksal's algorithm
  */
 public class DisjointS {
@@ -61,7 +60,6 @@ public class DisjointS {
     set.rank=0;
     set.parent=set;
     disjointSets.put(element,set);
-
   }
 
   public int sizeOfElementSet(long element){
@@ -76,8 +74,8 @@ public class DisjointS {
     else{
       return node;
     }
-
   }
+
   public void union(long element1, long element2){
     DsNode parent1 = findSet(element1);
     DsNode parent2 = findSet(element2);

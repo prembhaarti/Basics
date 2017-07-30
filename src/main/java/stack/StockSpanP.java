@@ -3,10 +3,25 @@ package stack;
 import java.util.Stack;
 
 /**
+ *                        0  1  2  3  4  5
  *  stock price array: {100,60,70,60,75,85}
  *  result array :     {1,  1, 2, 1, 4, 5 }
  *
  *  Need to check from present day how many stocks are equal or larger than past stock prices
+ *
+ *  create a stack where we'll store indexes
+ *  add 0 in stack first
+ *
+ *  start to traverse from i=1
+ *
+ *  if arr[i] < stack top
+ *    push in stack, and set result[i]= i- stack's top value
+ *
+ *  if arr[i]> stack top
+ *    keep popping
+ *  and condition break set result[i]= i- stack's top value
+ *
+ *  and push in stack current i
  *
  */
 public class StockSpanP {

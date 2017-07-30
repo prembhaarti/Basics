@@ -7,7 +7,7 @@ import java.util.Arrays;
  * We need to find next greater element
  * i.e. 2691
  */
-public class NextGreaterElement {
+public class NextPermutation {
 
   /**
    * O(nlogn)
@@ -42,9 +42,8 @@ public class NextGreaterElement {
   }
 
   public static void main(String[] args) {
-    NextGreaterElement nge= new NextGreaterElement();
+    NextPermutation nge= new NextPermutation();
     int[] arr= {2,1,9,6};
     System.out.println(Arrays.toString(nge.next(arr)));
   }
-
 }

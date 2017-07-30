@@ -2,6 +2,30 @@ package stack;
 
 import java.util.Stack;
 
+/**
+ * arr -> {4,9,1,7,2,3,5,0,10}
+ *
+ * insertion of element -> O(1)
+ * getting last added element -> O(1)
+ * getting minimum element -> O(1)
+ *
+ * create two stack -> stack and minStack
+ *
+ * adding:
+ *    if stack is empty put element in both
+ *    not empty
+ *      check if element less than minStack top
+ *        push element in both
+ *      else
+ *        only push in stack
+ * removing:
+ *    if stack top matches with minStack
+ *      remove from both
+ *    else only remove from stack
+ *
+ *    if stack empty return -1
+ */
+
 public class MinElem {
 
    private int[] elements= {4,9,1,7,2,3,5,0,10};
@@ -45,7 +69,6 @@ public class MinElem {
     for(int i=0;i<minElem.elements.length;i++){
       minElem.push(minElem.elements[i]);
       System.out.println("-"+minElem.getMin());
-
     }
   }
 }

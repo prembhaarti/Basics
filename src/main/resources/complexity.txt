@@ -47,4 +47,23 @@ AVL tree and
 Red Black tree : O(log) : for all operations for best and average case.
 
 Heap:
+       getMin -> O(1)
+       add -> O(nlogn) for n element : log n for 1 element
+       delete -> O(logn) for 1 element
+       sort -> O(nlogn)
 
+
+BFS: O(V+E) -> will visit each vertex when it's unexplored and enqueue
+               each enqueue will take O(1)
+               will visit each vertex when it's explored and dequeue it
+               each dequeue will take O(1)
+
+               similarly each edge will be visited once explored and unexplored.
+               So, O(V+E)
+
+DFS: O(V+E) -> will visit each vertex when it's unexplored and pushing to stack
+                each push will take O(1)
+                going in depth -> once visited will set as visited, so won't come
+                again while exploring
+                next time it'll come just checking explored or not explored
+                O(1)

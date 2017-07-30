@@ -41,7 +41,6 @@ public class BFS<T> {
 		}
 	}
 
-
 	public void traverse(GNode<T> startNode){
 		if(startNode!=null){
 			if(!startNode.isVisited()){
@@ -74,4 +73,3 @@ public class BFS<T> {
 		queue= new ConcurrentLinkedDeque<GNode<T>>();
 	}
 }
-

@@ -1,8 +1,5 @@
 package disjointset;
 
-/**
- * Created by lovebharti on 31/7/16.
- */
 public class DsNode {
    int rank;
    long data;

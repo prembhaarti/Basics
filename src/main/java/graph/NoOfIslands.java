@@ -83,6 +83,20 @@ public class NoOfIslands {
     return count;
   }
 
+  /**
+   * largerRegion is largest Island.
+   *
+   * set largeRegion=0;
+   * sent count=1 to dfs
+   *
+   * dfs returns count
+   *    largerRegion=max(largerRegion,count);
+   *
+   * under dfs, 8 position to cover
+   * under loop of covering 8 positions
+   *   if position valid -> count++ and send to dfs
+   *
+   */
   public int getLargestIsland(int[][] matrix){
     boolean [][] visited= new boolean[matrix.length][matrix[0].length];
     int largestRegion=0;
@@ -114,6 +128,4 @@ public class NoOfIslands {
     }
     return count;
   }
-
-
 }

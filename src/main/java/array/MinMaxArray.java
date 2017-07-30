@@ -2,9 +2,6 @@ package array;
 
 import java.util.Arrays;
 
-/**
- * Created by lovebharti on 17/9/16.
- */
 public class MinMaxArray {
 
   /**

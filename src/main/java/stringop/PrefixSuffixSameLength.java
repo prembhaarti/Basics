@@ -5,7 +5,10 @@ import java.util.Arrays;
 public class PrefixSuffixSameLength {
 
   /**
-   * a a b a a
+   *
+   * String having length of matching prefix and suffix
+   *
+   * a a b a a --> aab & baa <--
    * 0 1 0 1 2
    * j i
    * a a b a a
@@ -17,7 +20,7 @@ public class PrefixSuffixSameLength {
    *
    * here pref -> aa   suff -> aa
    *
-   * a b a b a
+   * a b a b a -> aba & aba <--
    * 0 0 1 2 3
    *
    * here pref -> aba , suff -> aba

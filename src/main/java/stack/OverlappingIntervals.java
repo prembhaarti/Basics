@@ -8,6 +8,10 @@ import java.util.Stack;
 
 /**
  * You're given list of time interval might be overlapping.
+ *  input:
+ *  [1,3], [2,6], [8,10], [15,18]
+ *  output:
+ *  [1,6], [8,10], [15,18]
  *
  * You've to merge the overlapping interval and result should contain all
  * non-overlapping intervals.

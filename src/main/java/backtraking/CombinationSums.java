@@ -51,7 +51,7 @@ public class CombinationSums {
 
     if(candidates!=null && candidates.length>0){
       Arrays.sort(candidates);
-      dfsRepeeatUniqueCombination(0,targetSum,path,result,candidates);
+      dfsRepeatUniqueCombination(0,targetSum,path,result,candidates);
     }
     return result;
   }
@@ -100,7 +100,7 @@ public class CombinationSums {
   }
 
 
-  public void dfsRepeeatUniqueCombination(int pos, int target, List<Integer> path, List<List<Integer>> result,int[] candidates){
+  public void dfsRepeatUniqueCombination(int pos, int target, List<Integer> path, List<List<Integer>> result,int[] candidates){
     if(target<0){
       return;
     }
@@ -111,7 +111,7 @@ public class CombinationSums {
 
     for(int i=pos;i<candidates.length;i++){
       path.add(candidates[i]);
-      dfsRepeeatUniqueCombination(i,target-candidates[i],path,result,candidates);
+      dfsRepeatUniqueCombination(i,target-candidates[i],path,result,candidates);
       path.remove(path.size()-1);
     }
   }
@@ -128,7 +128,7 @@ public class CombinationSums {
     for(int i=pos;i<candidates.length;i++){
       path.add(candidates[i]);
       dfsAllCombination(pos,target-candidates[i],path,result,candidates);
-      path.remove(path.size()-1);
+      path.remove(path.size()-1); //this will come after breaking target -ve condition
     }
   }
 
@@ -149,7 +149,7 @@ public class CombinationSums {
 
     for(int i=pos;i<candidates.length;i++){
       path.add(candidates[i]);
-      dfsRepeeatUniqueCombination(i+1,target-candidates[i],path,result,candidates);
+      dfsRepeatUniqueCombination(i+1,target-candidates[i],path,result,candidates);
       path.remove(path.size()-1);
     }
   }

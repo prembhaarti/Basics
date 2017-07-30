@@ -17,6 +17,7 @@ public class Kadanes {
    *    second case: if all having -ve with 0 or not
    *                 just check for larger element value
    *
+   * ie. {5,-1,3,-2,-1,6,0,-1,4} max sum =13
    */
   public int maxSubArraySum(int[] arr){
     int result=Integer.MIN_VALUE;

@@ -4,8 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Topological sort:
+ * Topological sort: O(V+E)
  *    sort in a way that least dependent will come first and most dependent in the last.
+ *
+ *    get all vertices from graph
+ *    create visited list of vertex
+ *
+ *    create resultList
+ *
+ *    loop for all vertices
+ *      if vertex is not visited
+ *        call dfsForTopSort method -> visited, result, vertex
+ *          in method
+ *            add passed vertex in visited list
+ *              get all adjacent vertex from this vertex
+ *                if any adjacent vertex not visited call recursively
+ *
+ *              at end you'll come to leaf node or not dependent vertex when out of loop
+ *              add this in result list
  *
  *    It uses DFS algorithm - Stack way
  */

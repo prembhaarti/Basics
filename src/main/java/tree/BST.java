@@ -1,13 +1,6 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class BST {
@@ -16,6 +9,29 @@ public class BST {
 	private int[] preOrder={3,1,0,2,5,4,6};
 
 	/**
+	 * if root is leaf return 1
+	 * if left is null return minDepth of right + 1
+	 * if right is null return minDepth of left + 1
+	 * if both child are not null return Min depth of both + 1
+	 * @param node
+	 * @return
+	 */
+	public int getMinDepth(Node node){
+		if (null == node) {
+			return 0;
+		}
+		else if (null == node.lc && null == node.rc) {
+			return 1;
+		} else if (null == node.lc) {
+			return getMinDepth(node.rc)+1;
+		} else if (null == node.rc) {
+			return getMinDepth(node.lc)+1;
+		}
+		return Math.min(getMinDepth(node.lc),getMinDepth(node.rc))+1;
+	}
+
+	/**
+	 * check if BST or not
 	 * predefined we send min to integer min and  max to integer max
 	 *  if data is under limit then keep checking
 	 * when go to left then max will be root (update)
@@ -61,29 +77,6 @@ public class BST {
 			return isMirrored && isMirrorTree(first.lc, second.rc) && isMirrorTree(first.rc,second.lc);
 
 		}
-	}
-
-	/**
-	 * if root is leaf return 1
-	 * if left is null return minDepth of right + 1
-	 * if right is null return minDepth of left + 1
-	 * if both child are not null return Min depth of both + 1
-	 * @param node
-	 * @return
-   */
-	public int getMinDepth(Node node){
-		if (null == node) {
-			return 0;
-		}
-		else if (null == node.lc && null == node.rc) {
-			return 1;
-		} else if (null == node.lc) {
-			return getMinDepth(node.rc)+1;
-		} else if (null == node.rc) {
-			return getMinDepth(node.lc)+1;
-		}
-		return Math.min(getMinDepth(node.lc),getMinDepth(node.rc))+1;
-
 	}
 
 	/**
@@ -138,7 +131,7 @@ public class BST {
 	 * 				print node data
 	 * 		take out its left and right
 	 * 				and add to queue
-   */
+     */
 	public void levelOrderTraversal(Node root){
 		if(root!=null){
 			if (nodeQueue.isEmpty()) {
@@ -160,6 +153,20 @@ public class BST {
 	Stack<Node> leftToRight= new Stack<>();
 	Stack<Node> rightToLeft= new Stack<>();
 
+	/**
+	 * create two stacck leftToRight and rightToLeft
+	 *
+	 * first put root to leftToRight
+	 * until leftToRight is empty take all it's node children
+	 * and put into rightToLeft
+	 *
+	 * same now until rightToLeft is empty take all its node children
+	 * and put into leftToRight
+	 *
+	 * until both gets empty
+	 *
+	 * print element data when you pop element from stack.
+	 */
 	public void zigzag(Node root){
 		leftToRight.push(root);
 		while(!leftToRight.isEmpty()||!rightToLeft.isEmpty()){
@@ -197,23 +204,17 @@ public class BST {
 
 	public Node getCommonAncestorBST(Node root,int a, int b){
 		if(root==null) return null;
-		else{
-			if(a==root.data||b==root.data) return root;
-			else if(a<root.data && b<root.data){
-				return	getCommonAncestorBST(root.lc, a, b);
-			}
-			else if(a>root.data && b>root.data){
-				return getCommonAncestorBST(root.rc, a, b);
-			}
-			else if((a<root.data && b>root.data)|| (a>root.data && b<root.data)){
-				return root;
-			}
+		if(a<root.data && b<root.data){
+			return	getCommonAncestorBST(root.lc, a, b);
 		}
-		return null;
+		if(a>root.data && b>root.data){
+			return getCommonAncestorBST(root.rc, a, b);
+		}
+		return root;
 	}
 
 	/**
-	 * if root left'sdata or root right's data -> a or b
+	 * if root left's data or root right's data -> a or b
 	 * 		return root
 	 *	send root.lc recursively -> will give left node in return
 	 *  send root.rc recursively -> will give right node in return
@@ -224,10 +225,7 @@ public class BST {
 	 *
    */
 	public Node getCommonAncestor(Node root, int a, int b){
-		if (root == null) {
-			return null;
-		}
-		if(root.data==a||root.data==b){
+		if (root == null||root.data==a||root.data==b) {
 			return root;
 		}
 		Node left=getCommonAncestor(root.lc,a, b);
@@ -238,15 +236,13 @@ public class BST {
 
 	//finds distance from root to given data node. result distance is one less pathLength method returns
 	public int pathLength(Node root, int data){
+		int pathLength=0;
 		if(root!=null){
-			int pathLength=0;
-			//
 			if(root.data==data||(pathLength=pathLength(root.lc,data))>0||(pathLength=pathLength(root.rc,data))>0){
 				return pathLength+1;
 			}
-			return 0;
 		}
-		return 0;
+		return pathLength;
 	}
 
 	public int distanceBetweenTwoNode(Node root, int data1,int data2){
@@ -325,6 +321,12 @@ public class BST {
 		return root;
 	}
 
+	/**
+	 * first reach to second left most node
+	 * 		check still any node on right
+	 *
+	 *
+	 */
 	public Node convertToDll(Node root){
 		Node node = convertToDLLUtil(root);
 
@@ -333,8 +335,35 @@ public class BST {
 		}
 		return node;
 	}
+	Node head=null;
+	Node previous=null;
 
+	/**
+	 * you can get head and traverse dll
+	 * @param root
+	 */
+	void BinaryTree2DoubleLinkedList(Node root)
+	{
+		// Base case
+		if (root == null)
+			return;
 
+		// Recursively convert left subtree
+		BinaryTree2DoubleLinkedList(root.lc);
+
+		// Now convert this node
+		if (prev == null)
+			head = root;//only run @1 case when making head
+		else
+		{
+			root.lc = previous;
+			previous.rc = root;
+		}
+		previous = root;
+
+		// Finally convert right subtree
+		BinaryTree2DoubleLinkedList(root.rc);
+	}
 	public void boundaryView(Node root){
 		printLeftBoundary(root);
 		printLeaves(root);
@@ -439,8 +468,6 @@ public class BST {
 		return root;
 	}
 
-
-
 	/**
 	 * to delete a particular number
 	 * we need to search first
@@ -480,12 +507,6 @@ public class BST {
 		return root;
 	}
 
-/*
-	public boolean isSubTree(Node parent, Node child){
-
-	}
-*/
-
 	public Node search(Node root,int data){
 		Node result=null;
 		if(root!=null){
@@ -519,43 +540,26 @@ public class BST {
 		}
 	}
 
-
-/*
-	public List<Node> combinationBST(int start, int end){
-		List<Node> result= new ArrayList<>();
-		for(int i=start;i<end;i++){
-			if(start>end){
-				result.add(null);
-				return result;
+	public boolean pathSum(Node root, int sum, List<Node> path){
+		if(root==null) { return false;}
+		if(sum-root.data==0){
+			if(root.lc==null && root.rc==null){
+				path.add(root);
+				return true;
 			}
-
-			List<Node> left= showMessage(start,)
 		}
-
+		else{
+			if(pathSum(root.lc,sum-root.data,path)){
+				path.add(root);
+				return true;
+			}
+			if(pathSum(root.rc,sum-root.data,path)){
+				path.add(root);
+				return true;
+			}
+		}
+		return false;
 	}
-*/
-
-
-public boolean pathSum(Node root, int sum, List<Node> path){
-	if(root==null) { return false;}
-	if(sum-root.data==0){
-		if(root.lc==null && root.rc==null){
-			path.add(root);
-			return true;
-		}
-	}
-	else{
-		if(pathSum(root.lc,sum-root.data,path)){
-			path.add(root);
-			return true;
-		}
-		if(pathSum(root.rc,sum-root.data,path)){
-			path.add(root);
-			return true;
-		}
-	}
-	return false;
-}
 
 	public void insert(Node root, int data) {
 		if (data <= root.data) {
@@ -592,6 +596,11 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 		}
 	}
 
+	/**
+	 * create stack push root
+	 * 	if root not null-> push and move to left
+	 * 	if root is null -> pop, print and move to right
+	 */
 	public void inOrderIteration(Node root){
 		Stack<Node> stack = new Stack<Node>();
 		if(root!=null)
@@ -610,6 +619,11 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 		}
 	}
 
+	/**
+	 * same as in inOrder but
+	 * print will occur in when root not null
+	 * @param root
+	 */
 	public void preOrderIteration(Node root){
 		Stack<Node> stack = new Stack<>();
 		if(root!=null)
@@ -638,34 +652,6 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 	}
 
 	/**
-	 * pass the storing	gArray size 2^(height of tree + 1) -1
-	 * to contain all values including leave node's child's null value
-	 *
-	 * pass initial parameter pos as 0
-	 */
-	public void serialize(Node root,int pos,Integer [] storingArray){
-		if(root==null){
-			storingArray[pos]=-1;
-		}
-		else{
-			storingArray[pos]=root.data;
-			serialize(root.lc,pos*2+1,storingArray);
-			serialize(root.rc,pos*2+2,storingArray);
-		}
-	}
-
-	public void deserialize(Integer[] storingArray,int pos,Node node){
-		if(storingArray[pos]==-1||pos>storingArray.length-1){
-			node=null;
-		}
-		else{
-			if(node==null) node = new Node(storingArray[pos]);
-			deserialize(storingArray,pos*2+1,node.lc);
-			deserialize(storingArray,pos*2+2,node.rc);
-		}
-	}
-
-	/**
 	 * make root as level 0
 	 * send left to level+1 and right to level-1
 	 *
@@ -677,7 +663,6 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 			if(!levelContainer.containsKey(level)){
 				levelContainer.put(level,root.data);
 			}
-
 				topViewHelper(root.lc,level-1);
 				topViewHelper(root.rc,level+1);
 		}
@@ -685,15 +670,11 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 
 	public void bottomViewHelper(Node root,int level){
 		if(root!=null){
-//			if(!levelContainer.containsKey(level)){
-				levelContainer.put(level,root.data);
-//			}
-
+			levelContainer.put(level,root.data);
 			bottomViewHelper(root.lc,level-1);
 			bottomViewHelper(root.rc,level+1);
 		}
 	}
-
 
 	public void topView(Node root){
 		topViewHelper(root,0);
@@ -834,12 +815,30 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 		return max;
 	}
 
-	public Node testUtil(Node rt){
-		Node head=rt;
-		while(head.lc!=null){
-			head=head.lc;
+	public Node btToBst(Node root) {
+		List<Integer> list = new ArrayList<>();
+		root=btToBstInorderCopy(root, list);
+		Collections.sort(list);
+		root=btToBstInorderPaste(root,list);
+		return root;
+	}
+
+	private Node btToBstInorderCopy(Node root,List<Integer> list){
+		if(root!=null){
+			btToBstInorderCopy(root.lc, list);
+			list.add(root.data);
+			btToBstInorderCopy(root.rc,list);
 		}
-		return head;
+		return root;
+	}
+	int listIndex=0;
+	private Node btToBstInorderPaste(Node root,List<Integer> list){
+		if(root!=null){
+			btToBstInorderPaste(root.lc, list);
+			root.data=list.get(listIndex++);
+			btToBstInorderPaste(root.rc,list);
+		}
+		return root;
 	}
 
 	public boolean isSumTree(Node root,SumTreeSum treeSum){
@@ -853,8 +852,7 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 		SumTreeSum leftSum=new SumTreeSum(0);
 		SumTreeSum rightSum=new SumTreeSum(0);
 		if(isSumTree(root.lc,leftSum) && isSumTree(root.rc,rightSum)) {
-			treeSum.sum = leftSum.sum + rightSum.sum;
-			if (root.data == treeSum.sum) {
+			if (root.data == leftSum.sum + rightSum.sum) {
 				return true;
 			}
 		}
@@ -959,6 +957,12 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 		}
 	}
 
+	/**
+	 * print all pairs with given condition, given no. k
+	 *
+	 * i.e  |a-b|<= k
+	 *      one element should be ancestor of another
+	 */
 	public void similarPair(Node root, int arr[], int index,int diff){
 		if(root!=null){
 			arr[index]=root.data;
@@ -1136,240 +1140,173 @@ public boolean pathSum(Node root, int sum, List<Node> path){
 		else return null;
 	}
 
-	public boolean rectify(Node root,Node prevRoot,Node wrongNode,boolean firstNodeSide){
-		if(root!=null){
-			return true;
+	/**
+	 *
+	 * take four extra pointers prev, first, mid, last
+	 * 	do inorder traversal
+	 * 	if root found less than prev
+	 * 		store prev in first, root in mid
+	 *
+	 * 	if root found less than prev again
+	 * 		store root in last.
+	 *
+	 * 	#1. possibility one-> swapped data are not parent child, in this case mid and last data
+	 * 						  needs to be swapped
+	 * 	#2. possibility two-> if last found null, means parent child are only swapped data,
+	 * 						  swap first and mid data.
+	 */
+	private Node rectifyUtil(Node root,Node prev,Node first,Node mid,Node last){
+		if (root != null) {
+			rectifyUtil(root.lc, prev, first, mid, last);
+			if (prev != null && root.data > prev.data) {
+					if(first==null){
+						first=prev;
+						mid=root;
+					}
+					else {
+						last=root;
+					}
+			}
+			rectifyUtil(root.rc, root, first, mid, last);
 		}
-
-		if(root.lc!=null){
-			if(root.lc.data>root.data){
-				if(wrongNode!=null){
-					Node temp=root.lc;
-					if(firstNodeSide){
-						root.lc=prevRoot.rc;
-						prevRoot.rc=temp;
-					}
-					else{
-						root.lc=prevRoot.lc;
-						prevRoot.lc=temp;
-					}
-				}
-				else{
-					wrongNode=root.lc;
-					prevRoot=root;
-					firstNodeSide=false;//false for left
-				}
-
+		return root;
+	}
+    Node first=null,mid=null,last=null,prev=null;
+	public void rectify(Node root){
+		if (root != null) {
+			rectifyUtil(root,prev,first,mid,last);
+			if(first!=null && last!=null){
+				int temp=first.data;
+				first.data=last.data;
+				last.data=temp;
+			}
+			else {
+				int temp=first.data;
+				first.data=mid.data;
+				mid.data=temp;
 			}
 		}
-		if(root.rc!=null){
-			if(root.rc.data<root.data){
-				if(wrongNode!=null){
-					Node temp=root.rc;
-					if(firstNodeSide){
-						root.rc=prevRoot.rc;
-						prevRoot.rc=temp;
-					}
-					else{
-						root.rc=prevRoot.lc;
-						prevRoot.lc=temp;
-					}
-				}
-				else {
 
-					wrongNode = root.rc;
-					prevRoot = root;
-					firstNodeSide = true;//true for right
-				}
+	}
+
+	public void printMidLevelOfPerfectTree(Node root) {
+		if (root != null) {
+			printMidLevelOfPerfectTreeUtil(root,root);
+		}
+	}
+	private void printMidLevelOfPerfectTreeUtil(Node a,Node b) {
+		if (a== null||b==null) {
+			return;
+		}
+		if (b.lc == null | b.rc == null) {
+			System.out.println(a.data);
+			return;
+		}
+		printMidLevelOfPerfectTreeUtil(a.lc,b.lc.lc);
+		printMidLevelOfPerfectTreeUtil(a.rc,b.lc.lc);
+	}
+
+	public void printExtreme(Node root)
+	{
+		//  star node is for keeping track of levels
+		Queue<Node> q = new LinkedList<Node>();
+
+		// pushing root node and star node
+		q.add(root);
+		q.add(null);
+
+		// if isFirst = true then left most node of that level
+		// will be printed
+		boolean isFirst = false;
+
+		// if isOne = true then that level has only one node
+		boolean isOne = false;
+
+		// last will store right most node of that level
+		int last = 0;
+
+		// Do level order traversal of Binary Tree
+		while (!q.isEmpty())
+		{
+			// dequeue the front node from the queue
+			Node temp = q.peek();
+			q.poll();
+
+			// if isFirst is true, then temp is leftmost node
+			if (isFirst)
+			{
+				System.out.print(temp.data + "  ");
+
+				if (temp.lc != null)
+					q.add(temp.lc);
+				if (temp.rc != null)
+					q.add(temp.rc);
+
+				// make isFirst as false and one = 1
+				isFirst = false;
+				isOne = true;
+			}
+
+			// Else if temp is a separator between two levels
+			else if (temp == null)
+			{
+				// Insert new separator if there are items in queue
+				if (q.size() >= 1)
+					q.add(null);
+
+				// making isFirst as true because next node will be
+				// leftmost node of that level
+				isFirst = true;
+
+				// printing last node, only if that level
+				// doesn't contain single node otherwise
+				// that single node will be printed twice
+				if (!isOne)
+					System.out.print(last + "  ");
+			}
+			else
+			{
+				// Store current key as last
+				last = temp.data;
+
+				// Here we are making isOne = false to signify
+				// that level has more than one node
+				isOne = false;
+				if (temp.lc != null)
+					q.add(temp.lc);
+				if (temp.rc != null)
+					q.add(temp.rc);
 			}
 		}
-		rectify(root.lc,prevRoot,wrongNode,firstNodeSide);
-		rectify(root.rc,prevRoot,wrongNode,firstNodeSide);
-		return false;
 	}
 
 
-
-
-
-
-
 	public static void main(String[] args) {
+		Node root= new Node(10);
+		root.lc = new Node(5);
+		root.rc = new Node(8);
+		root.lc.lc = new Node(2);
+		root.lc.rc = new Node(20);
+//		root.rc.lc = new Node(2);
+//		root.rc.rc = new Node(4);
 /*
-		tree.BST bst= new tree.BST();
-		tree.Node root= bst.getBST();
-		bst.allLevelOrderTraversal(root);
-		System.out.println(bst.isSibling(root, 19, 20));
+Node root= new Node(3);
+		root.lc = new Node(5);
+		root.rc = new Node(1);
+		root.lc.lc = new Node(0);
+		root.lc.rc = new Node(6);
+		root.rc.lc = new Node(2);
+		root.rc.rc = new Node(4);
 
-		System.out.println(bst.getCommonAncestor(root, 20, 60).data);
-
-		System.out.println("Is Bst: "+bst.isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE));
-
-		System.out.println("Is tree.BST: "+bst.isBST(bst.getBSTSample(),Integer.MIN_VALUE,Integer.MAX_VALUE));
-		System.out.println(bst.pathLength(root,65));
-
-		System.out.println("Distance between two nodes:"+bst.distanceBetweenTwoNode(root,19,45));
-		System.out.println("CAN:"+bst.getCommonAncestor(root,65,20).data);
-
-		System.out.println("isMirrorTree:"+bst.isMirrorTree(bst.getBST(),bst.getMirroredBST()));
-		//System.out.print("bstToDll"+bst.convertToDll(bst.getBST()));
-		System.out.println("BstToDll :");
-		tree.Node node=bst.convertToDll(bst.getBST());
-		while(node!=null){
-			System.out.print(node.data+",");
-			node=node.rc;
-		}
-		bst.levelOrderTraversal(bst.getBST());
-		System.out.println("Level order traversal");
-		while(!bst.nodeQueue.isEmpty()){
-			System.out.println(bst.nodeQueue.remove().data);
-		}
 */
-/*
 		BST bst = new BST();
-		Node root= new Node(9);
-		bst.insert(root,8);
-		bst.insert(root,7);
-		bst.insert(root,1);
-		//bst.insert(root,2);
-		bst.insert(root,2);
-		bst.insert(root,3);
-		bst.insert(root,4);
-*/
-//		List<Node> list= new ArrayList<Node>();
-		/*bst.pathSum(root,12,list);
-		for(Node node:list){
-			System.out.println(node.data +",");
-		}*/
-		//System.out.println(bst.getCommonAncestorBT(root,0,1).data);
-/*
-		System.out.println("Tree balanced:"+bst.isBSTBalanced(root));
-		int noOfNodes=(int)Math.pow(2,bst.getMaxDepth(root)+1)-1;
-		Integer[] storingArray= new Integer[noOfNodes];
-		bst.serialize(root,0,storingArray);
-		for(Integer element:storingArray){
-			System.out.println(element);
-		}
-
-		Node x=new Node(storingArray[0]);
-		bst.deserialize(storingArray,0,x);
-		bst.inOrder(x);
-*/
-		//bst.leftTreeView(root,0);
-		//bst.zigZagTraversal(root,1);
-		//bst.levelOrderTrav(root);
-		/*while(!bst.nodeQueue.isEmpty()){
-			System.out.println(bst.nodeQueue.remove().data);
-		}*/
-
-		//bst.boundaryView(root);
-//		System.out.println(bst.isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE));
-/*
-		int arr[] = {0,1,2,3,4,5,6};
-		Node route=
-				bst.sortedArrayToBST(arr,0,arr.length);
-		bst.inOrder(route);
-*/
-//bst.inOrderIteration(root);
-		//bst.topView(root);
-//		bst.bottomView(root);
-		//for(int i=0;i<8;i++)
-		//System.out.println("data:"+i+"level:"+bst.getLevel(root,i,0));
-		//System.out.println(bst.diameter(root));
-		//System.out.println(bst.isCousin(root,0,6));
-		//bst.diagonalTraversal(root);
-		//System.out.println(bst.maximumWidth(root));
-		//bst.levelOrderTraversal(root);
-/*
-		Node head=bst.testUtil(bst.test(root, root));
-		while(head!=null){
-			System.out.println(head.data);
-			head=head.rc;
-		}
+//		bst.rectifyUtil(root,null,null,null,null);
+		bst.rectify(root);
+		/*
+		Node rt=bst.btToBst(root);
+		bst.inOrder(rt);
 */
 
-		tree.BST bst= new tree.BST();
-//		tree.Node root= bst.getBST();
-		//bst.allLevelOrderTraversal(root);
-		//System.out.println(bst.isSibling(root, 55, 65));
-//		bst.inOrder(root);
-//		bst.preOrder(root);
-
-/*
-		Node root=bst.createBinaryTreeUsingInorderPreorder(bst.inOrder, bst.preOrder);
-		bst.inOrder(root);
-		bst.preOrder(root);
-*/
-
-		//System.out.println(bst.isSumTree(main,new SumTreeSum(0)));
-/*
-		StringBuilder ssb = new StringBuilder();
-		bst.getSerialized(main,ssb);
-*/
-
-//		bst.serializeBT(main,ssb);
-/*
-		System.out.println(ssb.toString());
-
-		bst.zigzag(main);
-*/
-		/*Node sub= new Node();
-		sub.data=0;
-		sub.lc=new Node(0);
-		sub.rc=new Node(2);
-		System.out.println(bst.isSubTree(main,sub));
-*/
-//		System.out.println(bst.getLevel(main,7));
-		Node main=bst.getBSTSample();
-		for(int i=0;i<8;i++) {
-			Node pred = bst.getSuccessor(main, null, i);
-			if (pred != null) {
-				System.out.println(i+": "+pred.data);
-			}
-			else{
-				System.out.println(i+": null");
-			}
-		}
-/*		Node rt= new Node(3);
-		rt.lc= new Node(2);
-		rt.rc= new Node(1);
-		rt.rc.rc= new Node(5);
-		rt.rc.lc= new Node(4);*/
-//		bst.deleteNode(main,2);
-		//bst.printKNodeBeforeLeaf(main,1,0,new ArrayList<>());
-		//bst.nodeHavingKLeaves(main,2);
-		//System.out.println(bst.maximumLevelSum(main));
-
-//		bst.similarPair(rt,new int[10],0,2);
-/*
-		bst.maxDiffBetweenAncestorAndNode(main,new ArrayList<>(),0);
-		System.out.println(bst.maxDiff);
-*/
-		//bst.preOrderIteration(main);
-
-/*
-		List<Integer> list = new ArrayList<>();
-		bst.getSerialized(main,list);
-		System.out.println(list);
-
-		Node tMain=bst.getDeserialized(list);
-		bst.preOrder(tMain);
-*/
-/*
-		bst.connectAtSameLevelNode(main);
-
-		Node temp=main.lc.lc;
-	while(temp!=null){
-			System.out.println(temp.data);
-			temp=temp.next;
-		}
-*/
-/*
-		bst.preOrder(main);
-		System.out.println();
-		Node x=bst.convertToMirrorInPlace(main);
-		bst.preOrder(x);
-*/
 	}
 
 

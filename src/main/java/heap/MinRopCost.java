@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 /**
  * Connect n ropes with minimum cost
  *
- * roaps with length {4,3,2,6}
+ * ropes with length {4,3,2,6}
  * cost to connect two roap = sum of length of both roap
  *
  * Ex 1 : 4+3 = 7
@@ -25,7 +25,6 @@ public class MinRopCost {
 
   PriorityQueue<Integer> heap = new PriorityQueue<>();
 
-
   public int ropeBindingCost(int[] ropesLen){
     if(ropesLen.length<2){
       return 0;
@@ -42,7 +41,6 @@ public class MinRopCost {
       heap.offer(sum);
     }
     return cost;
-
   }
 
   public static void main(String[] args) {

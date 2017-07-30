@@ -8,6 +8,21 @@ import java.util.PriorityQueue;
 import linkedlist.LNode;
 import linkedlist.Ll;
 
+/**
+ * Given n no. of sorted Linkedlist, with their heads in the arraylist.
+ * Need to merge them in sorted new LinkedList.
+ *
+ * Create a min heap.
+ * make a for loop from arraylist, take each linkedlist head and add in heap
+ *
+ * create a new result node
+ *
+ * take one element out of heap and add in result node and result=result.next
+ * now check if that element has next node ->null
+ * if not node=node.next and add in min heap
+ *
+ * return head of result node.
+ */
 public class MergeKList {
 
     public LNode merge(List<LNode> list){
@@ -51,10 +66,7 @@ public class MergeKList {
 
     Ll ll = new Ll();
     ll.display(sorted);
-
   }
-
-
 }
 
 class LNodeComparator implements Comparator<LNode>{

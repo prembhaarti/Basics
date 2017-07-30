@@ -17,6 +17,13 @@ public class ArrayPermutation {
    * [3, 2, 1]
    * [3, 1, 2]
    *
+   * pass array and initial position
+   *
+   * loop for start to end
+   *  print when position comes to end of array
+   *    swap i with pos -> this will jumble initial chars
+   *    pass num,pos+1
+   *    swap i with pos again -> this will jumble last chars
    */
   public void numPermutation(int[] nums,int pos){
     for(int i=pos;i<nums.length;i++){
@@ -31,6 +38,10 @@ public class ArrayPermutation {
     }
   }
 
+  /**
+   * same will go like permutation
+   * but pos when becomes equal to k-1 print and break;
+   */
   public void numPermutationOfKSize(int[] nums,int pos,int k){
     for(int i=pos;i<nums.length;i++){
       if(pos==k-1){
@@ -69,20 +80,20 @@ public class ArrayPermutation {
    * 3 1 2
    */
 
+  /**
+   * for all permutation, hence no need to size check
+   * so, after swap just print array as it is.
+   */
   public void numAllPermutation(int[] nums,int pos){
     for(int i=pos;i<nums.length;i++){
       CodeUtil.swap(nums, i, pos);
-
       for(int k=0;k<=pos;k++){
         System.out.print(nums[k]+" ");
       }
       System.out.println();
-
       numAllPermutation(nums, pos + 1);
-
       CodeUtil.swap(nums, i, pos);
       }
-
   }
 
   /**

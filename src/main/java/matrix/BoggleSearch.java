@@ -1,7 +1,9 @@
 package matrix;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import trie.Trie;
 
@@ -14,11 +16,20 @@ import trie.Trie;
  *
  *  check if given words can be made: "cat", "cook", "book","cats"
  *  using matrix.
+ *  Create trie of words to find in matrix:insert one by one
+ *
+ *  start to traverse matrix
+ *    create visited boolean matrix of matrix size for each element
+ *    send current position visited
+ *    and send in dfsMethod where pass trie,String,visited, positions
+ *      each time check word exist in trie then add in result
+ *      else check wordsStarts from method from trie is true, do recursion
  */
 public class BoggleSearch {
 
   char[][] board=null;
   List<String> dictionary=null;
+  Set<String> wordsFound = new HashSet<>();
 
   public BoggleSearch(char[][] board,List<String> dict){
     this.board=board;
@@ -36,6 +47,7 @@ public class BoggleSearch {
         searchWordUtil(visited,i,j,"",trie);
       }
     }
+    System.out.println(wordsFound);
   }
 
   public void searchWordUtil(boolean[][] visited,int i,int j, String sb,Trie dict){
@@ -48,7 +60,7 @@ public class BoggleSearch {
           String newWord=sb+board[rowPos][colPos];
           if(dict.wordExist(newWord)){
             visited[j][i]=true;
-            System.out.println(newWord);
+            wordsFound.add(newWord);
           }
           if(dict.startsWith(newWord)){
             visited[j][i]=true;
@@ -75,6 +87,4 @@ public class BoggleSearch {
     BoggleSearch bs= new BoggleSearch(board,dict);
     bs.searchWords();
   }
-
-
 }

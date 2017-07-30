@@ -21,6 +21,11 @@ import disjointset.DsNode;
  *    in disjoint set.
  * 4. while doing union add edge in the result set.
  * 5. from output of edge result set connect each edge you'll find the minimum spanning tree.
+ *
+ *
+ * key is minimum spanning tree-> we have sorted all edges, so minimum first added
+ *  and disjoint union doesn't allow same Vertices again with higher cost.
+ *
  */
 public class KruksalMst {
 

@@ -12,7 +12,7 @@ public class MinLenSubArray {
    * start to add currentSum from first element
    * if currentSum less than then keep on adding
    * if exceeds
-   *  update minLen and substract value from arr[start] from currentSum and start++
+   *  update minLen and subtract value from arr[start] from currentSum and start++
    */
   public int minLenSubArrayGreaterThanValueK(int[] arr, int k){
     int start=0,end=0;

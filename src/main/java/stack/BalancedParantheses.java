@@ -3,7 +3,18 @@ package stack;
 import java.util.Stack;
 
 /**
- * Created by lovebharti on 26/7/16.
+ * 5+[4*{3+5}/(3*2)+4]
+ *
+ * above expression has balanced parantheses
+ *
+ * if found open bracket push in stack
+ * if found close ->
+ *     return false if stack empty
+ *     or popped element is not corresponding open bracket
+ *
+ * after traversing completion
+ * if stack is empty return true
+ *
  */
 public class BalancedParantheses {
 

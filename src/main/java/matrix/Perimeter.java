@@ -1,7 +1,16 @@
 package matrix;
 
 /**
- * Created by lovebharti on 28/12/16.
+ * Given matrix:
+ * find perimeter to cover overall crop :ie 1 is crop
+ *
+ * start to traverse matrix
+ *
+ * if found 1 -> find connected ie. 1 in up, down, left, right
+ * then it fence = 4-connected components
+ *
+ * keep adding each fence perimeter and return
+ *
  */
 public class Perimeter {
   public static void main(String[] args) {

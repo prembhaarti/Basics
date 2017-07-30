@@ -1,5 +1,6 @@
 package heap;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -12,6 +13,7 @@ import java.util.PriorityQueue;
  * their frequency  : {4,3,2,1}
  *
  * Create a code for them:
+ * output: {a=0, b=10, c=111, d=110}
  *
  * Create a min heap having huffmanNode{data,freq} based on freq of char
  *
@@ -27,7 +29,6 @@ import java.util.PriorityQueue;
 public class HuffmanEncoding<T> {
 
   public Map<Character,String> encode(Map<T,Integer> inputMap){
-
     PriorityQueue<HuffmanNode<T>> heap = new PriorityQueue<>(inputMap.size(),new HuffmanNodeComparator<>());
 
     //adding data in heap
@@ -95,5 +96,40 @@ public class HuffmanEncoding<T> {
     HuffmanEncoding huff= new HuffmanEncoding();
     Map<Character,String> result=huff.encode(map);
     System.out.println(result);
+  }
+}
+
+class HuffmanNodeComparator<T> implements Comparator<HuffmanNode<T>> {
+  @Override
+  public int compare(HuffmanNode<T> node1, HuffmanNode<T> node2) {
+    if(node1.getFreq()>=node2.getFreq()){
+      return 1;
+    }
+    else{
+      return -1;
+    }
+  }
+}
+
+class HuffmanNode<T> {
+  private int freq;
+  private T data;
+  HuffmanNode<T> left;
+  HuffmanNode<T> right;
+
+  public int getFreq() {
+    return freq;
+  }
+
+  public void setFreq(int freq) {
+    this.freq = freq;
+  }
+
+  public T getData() {
+    return data;
+  }
+
+  public void setData(T data) {
+    this.data = data;
   }
 }

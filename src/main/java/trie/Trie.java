@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- *
  * TrieNode -> {char data, Map<char,TNode> children,boolean isEnd }
  *
  *  # get a root having null value and blank children map.
@@ -229,6 +228,4 @@ public class Trie {
 
     System.out.println(trie.patternExist("*ef"));
   }
-
-
 }

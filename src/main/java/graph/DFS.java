@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author lovebharti
- * Graph is traversed using graph.DFS using stack
+ * Graph is traversed using DFS using stack
  * Here recursion helping in stack behavior.
  *
  * Get first node print it, set it visited.

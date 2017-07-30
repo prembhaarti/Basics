@@ -2,157 +2,18 @@ package linkedlist;
 
 import java.util.Stack;
 
-import tree.Node;
-
 public class Ll {
-
-	static LNode rhead=null;
-	public static void main(String[] args) {
-		Ll ll= new Ll();
-
-/*
-		LNode head= new LNode(10);
-		head=ll.insert(head,5);
-		head=ll.insert(head, 15);
-		head=ll.insert(head, 2);
-		head=ll.insert(head, 50);
-		head=ll.insert(head, 2);
-		head=ll.insert(head, 10);
-		ll.display(head);
-		System.out.println("---");
-		rhead=ll.reverse(head);
-		ll.display(rhead);
-*/
-		//System.out.println("Middle tree.Node:"+ll.getMiddleNode(head).data);
-		//System.out.println(ll.getNthNodeFromEnd(head, 6).data);
-
-		//System.out.println(ll.isLoopedLinkedList(head));
-		//System.out.println(ll.isLoopedLinkedList(ll.getLoopedLinkedList()));
-
-/*
-		LNode h=ll.removeDuplicateInUnsorted(head);
-		ll.display(h);
-
-		System.out.println("--");
-		//making two intersect linkedlist
-		*/
-/**
-		 *
-		 *            1 -- 2
-		 * 			        \
-		 * 			         3 -- 4 -- 5 -- 6
-		 * 					/
-		 * 7 -- 8 -- 9 -- 10
-		 *//*
-
-
-		LNode head1= new LNode(1);
-		LNode node2= new LNode(2);
-		LNode node3= new LNode(3);
-		LNode node4= new LNode(4);
-		LNode node5= new LNode(5);
-		LNode node6= new LNode(6);
-
-		LNode head2= new LNode(7);
-		LNode node8= new LNode(8);
-		LNode node9= new LNode(9);
-		LNode node10= new LNode(10);
-
-		head1.next=node2;
-		node2.next=node3;
-		node3.next=node4;
-		node4.next=node5;
-		node5.next=node6;
-		head2.next=node8;
-		node8.next=node9;
-		node9.next=node10;
-		node10.next=node3;
-
-		//intersected linkedlist creation end.
-
-		LNode intersected=ll.getIntersectionInLinkedList(head1, head2);
-		System.out.println(intersected.data);
-*/
-		LNode a= null;
-		a=ll.insert(a,1);
-		a=ll.insert(a,2);
-/*
-		a=ll.insert(a,3);
-		a=ll.insert(a,4);
-		a=ll.insert(a,5);
-*/
-//		ll.display(ll.reverseInGroupOfSizeK(a,3));
-//		ll.display(rhead);
-		LNode b= null;
-		b=ll.insert(b,5);
-		b=ll.insert(b,6);
-/*
-		b=ll.insert(b,7);
-		b=ll.insert(b,8);
-*/
-		LNode result= ll.multiplyTwoNumber(a,b);
-		//LNode result=ll.addTwoNumber(a,b);
-		ll.display(result);
-/*
-		LNode a= null;
-		a=ll.insert(a,1);
-		a=ll.insert(a,2);
-		a=ll.insert(a,3);
-		a=ll.insert(a,0);
-		a=ll.insert(a,-1);
-		a=ll.insert(a,6);
-		a=ll.insert(a,7);
-		a=ll.insert(a,8);
-		//ll.display(a);
-		a=ll.deleteLargerNodeOnRightSide(a);
-		ll.display(a);
-		*/
-
-		/*LNode b= null;
-		b=ll.insert(b,2);
-		b=ll.insert(b,4);
-		b=ll.insert(b,6);
-		b=ll.insert(b,12);
-		LNode result=ll.mergeTwoSortedLL(a,b);
-*///		LNode result=ll.addTwoLinkedList(a, b);
-		//ll.display(result);
-
-		//ll.display(a);
-
-		//System.out.println(ll.getMiddleNode(a).data);
-
-
-
-
-/*
-		LNode a= null;
-		a=ll.insert(a,5);
-		a=ll.insert(a,6);
-		a=ll.insert(a,7);
-		a=ll.insert(a,8);
-		a=ll.insert(a,8);
-		a=ll.insert(a,7);
-		a=ll.insert(a,1);
-		a=ll.insert(a,5);
-		System.out.println(ll.isPalindrome(a));
-*/
-/*
-		LNode head=ll.getLoopedLinkedList();
-		System.out.println(ll.getLoopOriginNode(head).data);
-*/
-
-
-
-
-	}
-
-
-
 	/**
 	 * pass two list head whose node are intersecting at a point.
-	 * @param head1
-	 * @param head2
-	 * @return LNode (intersecting point)
+	 *
+	 * find which list is longer
+	 * find difference
+	 * move longer list by difference
+	 *
+	 * now move both list one by one
+	 * 	where both node matches point of intersection.
+	 *
+	 * if not matched there's no intersection
 	 */
 	public LNode getIntersectionInLinkedList(LNode head1, LNode head2){
 
@@ -213,8 +74,7 @@ public class Ll {
 	/**
 	 * return node if it contains looped linked list
 	 * return null otherwise
-	 * @param head
-	 * @return
+	 *
    */
 	public LNode isLoopedLinkedList(LNode head){
 		LNode fast=head;
@@ -241,30 +101,6 @@ public class Ll {
 		return meetPoint;
 	}
 
-
-	public void dummySort(){
-		for(int i=0;i<5;i++){
-			for(int j=0;j<i;j++){
-
-					//swap the variable if second is found lesser than the first
-
-				System.out.println();
-			}
-		}
-	}
-
-
-	public void sort(LNode head){
-
-
-		if(head!=null){
-			while(head.next!=null){
-				head=head.next;
-
-			}
-		}
-	}
-
 	public LNode insert(LNode root, int data){
 		LNode head =root;
 		if(root==null){
@@ -286,11 +122,10 @@ public class Ll {
 			}
 	}
 
-
-	public LNode getMiddleNode(LNode root){
-		LNode slow= root;
-		LNode fast=root;
-		if(root!=null){
+	public LNode getMiddleNode(LNode head){
+		LNode slow= head;
+		LNode fast=head;
+		if(head!=null){
 			while(fast!=null){
 				fast = fast.next;
 				if(fast!=null){
@@ -305,19 +140,17 @@ public class Ll {
 		}
 	}
 
-	public void deleteLinkedList(LNode head){
-		LNode nextNode=head.next;
-		while(nextNode!=null){
-			head=null;
-			head=nextNode;
+	public void delLinkedList(LNode head) {
+		LNode prev=head;
+		if (head != null) {
 			head=head.next;
+			prev=null;
+			prev=head;
 		}
-		head=null;
 	}
 
-
 	public LNode getNthNodeFromEnd(LNode head, int n){
-		//get nAhead node which will be n step ahead of root
+		//get nAhead node which will be n step ahead of head
 		LNode nAhead=head;
 		if(nAhead!=null){
 			while(nAhead.next!=null){
@@ -369,12 +202,12 @@ public class Ll {
 		return r;
 	}
 
-
 	public LNode reverseInGroupOfSizeK(LNode p,int size){
+		int count=size;
+
 		LNode r=null;
 		LNode head=p;
 		LNode q=p;
-		int count=size;
 
 		//first reverse of size k same we reverse in iterative reverse
 		while(p!=null && count--!=0){
@@ -394,8 +227,6 @@ public class Ll {
 
 	/**
 	 * 10 5 30 2 35
-	 * @param head
-	 * @return
 	 */
 	public LNode reverse(LNode head){
 		//wait until last node comes make this head (defined static)
@@ -423,9 +254,6 @@ public class Ll {
    *  and sum sum=sum%10
    *
    *  and keep adding to linkedlist
-   *
-   *
-   *
    *
    */
 	public LNode addTwoLinkedList(LNode a, LNode b){
@@ -455,8 +283,16 @@ public class Ll {
 		else if(!stack2.isEmpty()) tempStack=stack2;
 		while(tempStack!=null && !tempStack.isEmpty()){
 			if(carry>0){
-				result=insert(result,tempStack.pop()+carry);
-				carry=0;
+				int sum=tempStack.pop()+carry;
+				if(sum>9){
+					carry=1;
+					sum=sum%10;
+				}
+				else {
+					carry=0;
+				}
+				result=insert(result,sum);
+
 			}
 			else{
 				result=insert(result,tempStack.pop()+carry);
@@ -640,6 +476,52 @@ public class Ll {
 		return head;
 	}
 
+	/**
+	 *
+	 * keep slowNode=head
+	 *
+	 * first go k ahead
+	 * 		store node in firstKNode
+	 * keep fastNode=firstKNode.next
+	 *
+	 * now move fastNode and slowNode until fastNode!=null
+	 * slowNode will be k behind from last
+	 *
+	 * swap firstKNode and slowNode
+	 */
+	public void swapFirstKWithLastK(LNode node,int k) {
+
+		if (node == null && k < 1) {
+			return;
+		}
+
+		LNode firstK=node;
+		int head=1;
+		LNode slowNode=node;
+		LNode fastNode=node;
+
+		//first move k and get firstK from start
+		while (node != null && head<k) {
+			node=node.next;
+			firstK=node;
+			head++;
+		}
+		//if k given greater than list size
+		if(head>k){return;}
+
+		fastNode=firstK.next;
+		//move both one by one when fastNode is null slowNode will be at k distance from last
+		while(fastNode!=null){
+			slowNode=slowNode.next;
+			fastNode=fastNode.next;
+		}
+
+		//swap slowNode and first K data
+		int temp=slowNode.data;
+		slowNode.data=firstK.data;
+		firstK.data=temp;
+	}
+
 	public LNode addTwoNumber(LNode a, LNode b){
 		a=iterativeReverse(a);
 		b=iterativeReverse(b);
@@ -735,4 +617,155 @@ public class Ll {
 		return temp;
 	}
 
+	static LNode rhead=null;
+	public static void main(String[] args) {
+		Ll ll= new Ll();
+
+/*
+		LNode head= new LNode(10);
+		head=ll.insert(head,5);
+		head=ll.insert(head, 15);
+		head=ll.insert(head, 2);
+		head=ll.insert(head, 50);
+		head=ll.insert(head, 2);
+		head=ll.insert(head, 10);
+		ll.display(head);
+		System.out.println("---");
+		rhead=ll.reverse(head);
+		ll.display(rhead);
+*/
+		//System.out.println("Middle tree.Node:"+ll.getMiddleNode(head).data);
+		//System.out.println(ll.getNthNodeFromEnd(head, 6).data);
+
+		//System.out.println(ll.isLoopedLinkedList(head));
+		//System.out.println(ll.isLoopedLinkedList(ll.getLoopedLinkedList()));
+
+/*
+		LNode h=ll.removeDuplicateInUnsorted(head);
+		ll.display(h);
+
+		System.out.println("--");
+		//making two intersect linkedlist
+		*/
+/**
+ *
+ *            1 -- 2
+ * 			        \
+ * 			         3 -- 4 -- 5 -- 6
+ * 					/
+ * 7 -- 8 -- 9 -- 10
+ *//*
+
+
+		LNode head1= new LNode(1);
+		LNode node2= new LNode(2);
+		LNode node3= new LNode(3);
+		LNode node4= new LNode(4);
+		LNode node5= new LNode(5);
+		LNode node6= new LNode(6);
+
+		LNode head2= new LNode(7);
+		LNode node8= new LNode(8);
+		LNode node9= new LNode(9);
+		LNode node10= new LNode(10);
+
+		head1.next=node2;
+		node2.next=node3;
+		node3.next=node4;
+		node4.next=node5;
+		node5.next=node6;
+		head2.next=node8;
+		node8.next=node9;
+		node9.next=node10;
+		node10.next=node3;
+
+		//intersected linkedlist creation end.
+
+		LNode intersected=ll.getIntersectionInLinkedList(head1, head2);
+		System.out.println(intersected.data);
+*/
+		LNode a= null;
+		a=ll.insert(a,1);
+		a=ll.insert(a,2);
+		a=ll.insert(a,3);
+		a=ll.insert(a,4);
+		a=ll.insert(a,5);
+		a=ll.insert(a,6);
+		a=ll.insert(a,7);
+		a=ll.insert(a,8);
+		ll.swapFirstKWithLastK(a,3);
+/*
+		LNode b= null;
+		b=ll.insert(b,9);
+		b=ll.insert(b,9);
+		b=ll.insert(b,9);
+		b=ll.insert(b,9);
+		b=ll.insert(b,9);
+		b=ll.insert(b,9);
+		b=ll.insert(b,9);
+		LNode result= ll.addTwoLinkedList(a,b);
+*/
+		ll.display(a);
+
+/*
+		a=ll.insert(a,3);
+		a=ll.insert(a,4);
+		a=ll.insert(a,5);
+*/
+//		ll.display(ll.reverseInGroupOfSizeK(a,3));
+//		ll.display(rhead);
+//		LNode b= null;
+//		b=ll.insert(b,5);
+//		b=ll.insert(b,6);
+/*
+		b=ll.insert(b,7);
+		b=ll.insert(b,8);
+*/
+//		LNode result= ll.multiplyTwoNumber(a,b);
+		//LNode result=ll.addTwoNumber(a,b);
+//		ll.display(result);
+/*
+		LNode a= null;
+		a=ll.insert(a,1);
+		a=ll.insert(a,2);
+		a=ll.insert(a,3);
+		a=ll.insert(a,0);
+		a=ll.insert(a,-1);
+		a=ll.insert(a,6);
+		a=ll.insert(a,7);
+		a=ll.insert(a,8);
+		//ll.display(a);
+		a=ll.deleteLargerNodeOnRightSide(a);
+		ll.display(a);
+		*/
+
+		/*LNode b= null;
+		b=ll.insert(b,2);
+		b=ll.insert(b,4);
+		b=ll.insert(b,6);
+		b=ll.insert(b,12);
+		LNode result=ll.mergeTwoSortedLL(a,b);
+*///		LNode result=ll.addTwoLinkedList(a, b);
+		//ll.display(result);
+
+		//ll.display(a);
+
+		//System.out.println(ll.getMiddleNode(a).data);
+/*
+		LNode a= null;
+		a=ll.insert(a,5);
+		a=ll.insert(a,6);
+		a=ll.insert(a,7);
+		a=ll.insert(a,8);
+		a=ll.insert(a,8);
+		a=ll.insert(a,7);
+		a=ll.insert(a,1);
+		a=ll.insert(a,5);
+		System.out.println(ll.isPalindrome(a));
+*/
+/*
+		LNode head=ll.getLoopedLinkedList();
+		System.out.println(ll.getLoopOriginNode(head).data);
+*/
+	}
 }

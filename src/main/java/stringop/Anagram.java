@@ -4,6 +4,28 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *  Anagram are jumbled words.
+ *
+ *     space-> O(1) Time complexity -> O(m+n)
+ *  1. check both words length -> not equal return false
+ *     make array of 256
+ *     traverse first array make char[i]=true
+ *     traverse second array check if char[i]=true
+ *     if any one found false return false
+ *
+ *     space-> O(n+m) time complexity -> O(m+n)
+ *  2. create a hashmap
+ *  	traverse first array -> put each char frequency
+ *      traverse second array -> if not found any char break
+ *      else reduce each frequency by 1
+ *      at end check if map is empty -> return true else false
+ *
+ *  3. No extra space, Time complexity -> O(nlogn)
+ *
+ *     sort both array and check if equality
+ *
+ */
 public class Anagram {
 
 	private static final String[] words= {"Prem","merp", "erpm","pmre","marp"};

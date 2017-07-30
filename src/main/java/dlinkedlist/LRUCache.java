@@ -45,7 +45,7 @@ public class LRUCache {
   public Page get(String url){
     if(map.containsKey(url)){
       DLNode<Page> node = map.get(url);
-      removeFromDll(map.get(url));
+      removeFromDll(node);
       head=appendToDll(head,node);
       return node.data;
     }

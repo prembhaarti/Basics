@@ -13,6 +13,34 @@ import com.interview.graph.BinaryMinHeap;
  *  # graph should be -> directed or undirected but having non-negative weight
  *  # Implementation using min priority queue :: O(|E|+|V|log|V|)
  *  This shortest path algorithm is widely used in network routing protocols
+ *
+ *  a source vertex and graph will be given for dijkstra
+ *
+ *  create a binaryMinHeap and add all vertices with Integer.Max as key and val-> vertices
+ *
+ *  keep a map of distance (key-> vertices, value -> distance)
+ *  keep a map of parents (key-> vertices, value-> partent vertices)
+ *
+ *  first, decrease value of source vertex to zero in minHeap
+ *  put distance of source -> 0 in map
+ *  put parent of source -> null in map
+ *
+ * So, till now we have least distance of source.
+ *
+ * do the following until minHeap -> Empty
+ *
+ *  Extract minNode from minHeap
+ *    it'll give you node with least weight i.e. initially you get source (0 weight)
+ *      let's say this node currentMin.
+ *
+ *  get currentMinVertex from currentMin
+ *    get all edges from currentMinVertex.
+ *      from each edge get it's another vertex connected to current
+ *        calculate newDistance= currentMinVertex's weight + edgeCost
+ *        if newDistance weight is less than minHeap weight update in minHeap
+ *        and set it's parent to currentMinVertex.
+ *
+ *  repeat
  */
 public class Dijkstra<T> {
 

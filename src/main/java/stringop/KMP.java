@@ -1,6 +1,11 @@
 package stringop;
 
 /**
+ * KMP algo finds substring in a String
+ *
+ * main String -> "abaabaaa"
+ * subString   -> "aabaa"
+ *
  * O(m+n) -> where m is length of substring and n is length of main string
  *
  *  start to match from text and pattern first character
