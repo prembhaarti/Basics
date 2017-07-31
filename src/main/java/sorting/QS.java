@@ -1,4 +1,4 @@
-package array;
+package sorting;
 
 /**
  * Created by lovebharti on 31/8/16.

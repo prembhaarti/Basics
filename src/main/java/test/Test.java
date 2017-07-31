@@ -1,4 +1,4 @@
-package array;
+package test;
 
 //import org.apache.commons.codec.binary.Base64;
 

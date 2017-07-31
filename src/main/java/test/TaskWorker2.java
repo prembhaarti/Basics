@@ -1,6 +1,5 @@
-package array;
+package test;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.Semaphore;
 
 public class TaskWorker2 implements Runnable {
