@@ -702,7 +702,7 @@ public class BST {
 	}
 
 	public Node sortedArrayToBST(int[] array,int low, int high){
-			if(array.length<1 ||low==high)return null;
+			if(array.length<1 ||low>=high)return null;
 			int mid=(low+high)/2;
 			Node root=new Node(array[mid]);
 			root.lc=sortedArrayToBST(array,low,mid);
@@ -1206,6 +1206,106 @@ public class BST {
 		printMidLevelOfPerfectTreeUtil(a.rc,b.lc.lc);
 	}
 
+
+	/**
+	 * Q: can given array in pre-order belongs to any BST
+	 *
+	 * #Note: whenever go to right update root, coz you are going to get the larger value.
+	 *		  current array element should be less than root value.
+	 *
+	 * take array
+	 * take root as integer and set min value to it
+	 * loop for every element
+	 *
+	 * if any element found less root than return false i.e. not preorder of bst
+	 * if stack not empty and present element is greater than top of stack
+	 * 		change root to current element and pop to element
+	 *
+	 * push every element to stack.
+	 *
+	 * @param arr
+	 * @return
+	 */
+	public boolean isPreOrder(int[] arr) {
+		int root= Integer.MIN_VALUE;
+
+		Stack<Integer> stack = new Stack<>();
+		for(int i=0;i<arr.length;i++){
+			if (arr[i] < root) {
+				return false;
+			}
+			if(!stack.isEmpty() && arr[i]>stack.peek()){
+				stack.pop();
+				root=arr[i];
+			}
+			stack.push(arr[i]);
+		}
+		return true;
+	}
+
+	/**
+	 * print leftmost and rightmost of given BST
+	 *
+	 * take two node leftmost and rightmost
+	 * for leftmost: check if left child exist assign left child to leftmost if not exist assign right child to leftmost
+	 * for rightmost: check if right child exist assign right child to rightmost if not exist assign left child to rightmost
+	 *
+	 */
+	public void leftAndRightEndNode(Node root){
+		if (root == null) {
+			return;
+		}
+		System.out.println(root.data);
+		Node leftMost=root.lc;
+		Node rightMost=root.rc;
+		while (leftMost != null || rightMost != null) {
+			if (leftMost != null) {
+				System.out.println(leftMost.data);
+				if (leftMost.lc != null) {
+					leftMost=leftMost.lc;
+				}
+				else {
+					leftMost=leftMost.rc;
+				}
+			}
+			if (rightMost != null) {
+				System.out.println(rightMost.data);
+				if (rightMost.rc != null) {
+					rightMost=rightMost.rc;
+				}
+				else {
+					rightMost=rightMost.lc;
+				}
+			}
+		}
+	}
+
+	public void bothEndNode(Node root) {
+		if (root != null) {
+			Queue<Integer> queue = new LinkedList<>();
+
+
+
+
+		}
+	}
+
+	public boolean isomorphic(Node root1, Node root2){
+		if (root1 == null && root2 == null) {
+			return true;
+		}
+		if (root1 == null || root2 == null) {
+			return false;
+		}
+		if (root1.data != root2.data) {
+			return false;
+		}
+
+		return isomorphic(root1.lc, root2.lc) && isomorphic(root1.rc, root2.rc)
+				|| isomorphic(root1.lc, root2.rc) && isomorphic(root1.rc, root2.lc);
+
+	}
+
 	public void printExtreme(Node root)
 	{
 		//  star node is for keeping track of levels
@@ -1282,14 +1382,15 @@ public class BST {
 
 
 	public static void main(String[] args) {
+/*
 		Node root= new Node(10);
 		root.lc = new Node(5);
 		root.rc = new Node(8);
 		root.lc.lc = new Node(2);
 		root.lc.rc = new Node(20);
+*/
 //		root.rc.lc = new Node(2);
 //		root.rc.rc = new Node(4);
-/*
 Node root= new Node(3);
 		root.lc = new Node(5);
 		root.rc = new Node(1);
@@ -1298,10 +1399,10 @@ Node root= new Node(3);
 		root.rc.lc = new Node(2);
 		root.rc.rc = new Node(4);
 
-*/
 		BST bst = new BST();
+		bst.reverseLevelOrder(root);
 //		bst.rectifyUtil(root,null,null,null,null);
-		bst.rectify(root);
+		//bst.rectify(root);
 		/*
 		Node rt=bst.btToBst(root);
 		bst.inOrder(rt);
@@ -1404,6 +1505,30 @@ Node root= new Node(3);
 
 		return null;
 	}
+
+	public void reverseLevelOrder(Node root) {
+		Queue<Node> queue = new LinkedList<>();
+		Stack<Node> stack = new Stack<>();
+		if(root!=null){
+			queue.add(root);
+		}
+		else return;
+
+		while(!queue.isEmpty()){
+			Node removedNode=queue.remove();
+			stack.push(removedNode);
+			if (removedNode.rc!=null) {
+				queue.add(removedNode.rc);
+			}
+			if (removedNode.lc != null) {
+				queue.add(removedNode.lc);
+			}
+		}
+		while (!stack.isEmpty()){
+			System.out.println(stack.pop().data);
+		}
+	}
+
 
 
 	public void connectAtSameLevelNode(Node root){

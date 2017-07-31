@@ -67,3 +67,19 @@ DFS: O(V+E) -> will visit each vertex when it's unexplored and pushing to stack
                 again while exploring
                 next time it'll come just checking explored or not explored
                 O(1)
+
+
+Sorting:
+
+Bubble sort:
+    Worst case : O(n2)
+    Best case : O(n1) -> improved version
+    space complexity: O(n1)
+    In place sort
+
+    Advantage: it can detect whether existing array is sorted or not
+
+Selection sort:
+    Worst,Best,Average case : O(n2)
+    In place sort
+    space complexity: O(n2)
