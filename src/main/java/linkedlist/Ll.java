@@ -548,55 +548,6 @@ public class Ll {
 		return resultHead;
 	}
 
-	public LNode multiplyTwoNumber(LNode a, LNode b){
-		//Check which is larger linkedList
-		LNode largerNode=a;
-		LNode smallerNode=iterativeReverse(b);
-/*
-		while(largerNode!=null && smallerNode!=null){
-			largerNode=largerNode.next;
-			smallerNode=smallerNode.next;
-		}
-		if(largerNode!=null|| (largerNode==null && smallerNode==null)){
-			largerNode=a;
-			smallerNode=b;
-		}
-		else{
-			largerNode=b;
-			smallerNode=a;
-		}
-
-		LNode totalSum=new LNode(0);
-		LNode lowerSum=new LNode();
-*/
-		int index=0;
-		LNode totalSum=new LNode(0);
-		while(smallerNode!=null){
-			largerNode=a;
-			LNode singleBaseMultiply=multiplyWithSingleNumber(largerNode,smallerNode.data*((int)Math.pow(10,index++)));
-			totalSum=addTwoLinkedList(singleBaseMultiply,totalSum);
-			smallerNode=smallerNode.next;
-		}
-		return totalSum;
-	}
-
-	public LNode multiplyWithSingleNumber(LNode bigNumber,int num){
-		bigNumber=iterativeReverse(bigNumber);
-		LNode resultNode=new LNode();
-		LNode head=resultNode;
-		int carry=0;
-		int sum=0;
-		while(bigNumber!=null){
-			sum=num*bigNumber.data+carry;
-			carry=(num*bigNumber.data)/10;
-			if(sum>9){sum=sum-10;}
-			resultNode.next=new LNode(sum);
-			bigNumber=bigNumber.next;resultNode=resultNode.next;
-		}
-		if(carry!=0) resultNode.next=new LNode(carry);
-		return iterativeReverse(head.next);
-	}
-
 	public LNode rearrange(LNode head){
 		LNode middle=getMiddleNode(head);
 		LNode reversed=reverse(middle);

@@ -815,6 +815,13 @@ public class BST {
 		return max;
 	}
 
+	/**
+	 * traverse BT inorder and store it in a list
+	 * sort list
+	 * again traverse inorder BT and put data from list into traverse node one by one
+	 *
+	 * for putting data make index=0, add and increment index
+	 */
 	public Node btToBst(Node root) {
 		List<Integer> list = new ArrayList<>();
 		root=btToBstInorderCopy(root, list);
@@ -859,49 +866,11 @@ public class BST {
 		return false;
 	}
 
-	public Node test(Node rt,Node prev){
-		if(rt==null){
-			return null;
-		}
-		/*if(head==null){
-			head=rt;
-			while(rt.lc!=null){
-				head=head.lc;
-			}
-		}*/
-		Node left= test(rt.lc,rt);
-		Node right= test(rt.rc,rt);
-		if(left==null && right==null){
-			return rt;
-		}
-		else if(left!=null){
-			left.rc=rt;
-			rt.lc=left;
-		}
-		if(right!=null){
-			rt.rc=right;
-			right.lc=rt;
-		}
-		if(rt==prev){return rt;}
-		if(rt.data<prev.data){
-			if(right!=null){return right;}
-			else{ return rt;}
-		}
-		else{
-			if(left!=null){
-				return left;
-			}
-			else{
-				return rt;
-			}
-		}
-	}
-
 	public Node createBinaryTreeUsingInorderPreorder(int[] in,int[] pre){
 		Node root= createBinaryTreeUsingInorderPreorderUtil(in, pre, 0,in.length-1);
 		return root;
 	}
-	//private int index=0;
+	private int index=0;
 	public Node createBinaryTreeUsingInorderPreorderUtil(int[] in, int[] pre, int start, int end){
 		if(start>end){
 			return null;
@@ -1198,7 +1167,7 @@ public class BST {
 		if (a== null||b==null) {
 			return;
 		}
-		if (b.lc == null | b.rc == null) {
+		if (b.lc == null || b.rc == null) {
 			System.out.println(a.data);
 			return;
 		}
@@ -1223,8 +1192,6 @@ public class BST {
 	 *
 	 * push every element to stack.
 	 *
-	 * @param arr
-	 * @return
 	 */
 	public boolean isPreOrder(int[] arr) {
 		int root= Integer.MIN_VALUE;
@@ -1234,9 +1201,9 @@ public class BST {
 			if (arr[i] < root) {
 				return false;
 			}
-			if(!stack.isEmpty() && arr[i]>stack.peek()){
-				stack.pop();
+			while(!stack.isEmpty() && arr[i]>stack.peek()){
 				root=arr[i];
+				stack.pop();
 			}
 			stack.push(arr[i]);
 		}
@@ -1380,135 +1347,14 @@ public class BST {
 		}
 	}
 
-
-	public static void main(String[] args) {
-/*
-		Node root= new Node(10);
-		root.lc = new Node(5);
-		root.rc = new Node(8);
-		root.lc.lc = new Node(2);
-		root.lc.rc = new Node(20);
-*/
-//		root.rc.lc = new Node(2);
-//		root.rc.rc = new Node(4);
-Node root= new Node(3);
-		root.lc = new Node(5);
-		root.rc = new Node(1);
-		root.lc.lc = new Node(0);
-		root.lc.rc = new Node(6);
-		root.rc.lc = new Node(2);
-		root.rc.rc = new Node(4);
-
-		BST bst = new BST();
-		bst.reverseLevelOrder(root);
-//		bst.rectifyUtil(root,null,null,null,null);
-		//bst.rectify(root);
-		/*
-		Node rt=bst.btToBst(root);
-		bst.inOrder(rt);
-*/
-
-	}
-
-
-
-	public Node getBST(){
-		BST bst = new BST();
-		Node root= new Node(45);
-		bst.insert(root, 20);
-		bst.insert(root, 60);
-		bst.insert(root, 21);
-		bst.insert(root, 19);
-		bst.insert(root, 55);
-		bst.insert(root, 65);
-		return root;
-	}
-
-	public Node getMirroredBST(){
-		Node root= new Node(45);
-		root.lc=new Node(60);
-		root.rc=new Node(20);
-		root.lc.lc= new Node(65);
-		root.lc.rc = new Node(55);
-		root.rc.lc= new Node(21);
-		root.rc.rc= new Node (19);
-		return root;
-	}
-
-	public Node getSumTree(){
-		Node root= new Node(12);
-		root.lc=new Node(2);
-		root.rc=new Node(10);
-		root.lc.lc=new Node(0);
-		root.lc.rc=new Node(2);
-		root.rc.lc= new Node(4);
-		root.rc.rc=new Node(6);
-		return root;
-	}
-	public Node getBSTSample(){
-		Node root= new Node(3);
-		root.lc=new Node(1);
-		root.rc=new Node(5);
-		root.lc.lc=new Node(0);
-		root.lc.rc=new Node(2);
-		root.rc.lc= new Node(4);
-		root.rc.rc=new Node(6);
-		return root;
-	}
-
-	public void serializeBT(Node root,StringBuilder sb){
-		if(root==null){
-			sb.append("%,");
-			return;
-		}
-		sb.append(root.data).append(",");
-		serializeBT(root.lc, sb);
-		serializeBT(root.rc, sb);
-	}
-
-	//int index=0;
-	public Node deserialize(Node root,String[] sb) {
-		if(index<sb.length){
-			if(sb[index].equals("%")){
-				root=null;
-				index++;
-				return root;
-			}
-			else{
-
-			}
-		}
-		return null;
-	}
-
-	public void getSerialized(Node node,StringBuilder sb){
-		if (node == null) {
-			sb.append("%,");
-		}
-		sb.append(node.data).append(",");
-		if (node.lc != null || node.rc != null) {
-			sb.append("$,");
-			getSerialized(node.lc,sb);
-			getSerialized(node.rc, sb);
-		}
-	}
-	int index=0;
-	public Node getDeserialized(String data){
-		if("".equals(data)||null==data){
-			return null;
-		}
-		String[] elements=data.split(",");
-		if(elements.length>0){
-
-
-		}
-
-		return null;
-	}
-
+	/**
+	 * same as level order traversal just keep putting each level in stack
+	 * and do traversal from right to left, so that stack will give you left to right
+	 */
 	public void reverseLevelOrder(Node root) {
-		Queue<Node> queue = new LinkedList<>();
 		Stack<Node> stack = new Stack<>();
+
+		Queue<Node> queue = new LinkedList<>();
 		if(root!=null){
 			queue.add(root);
 		}
@@ -1528,8 +1374,6 @@ Node root= new Node(3);
 			System.out.println(stack.pop().data);
 		}
 	}
-
-
 
 	public void connectAtSameLevelNode(Node root){
 		if(root==null){
@@ -1584,6 +1428,92 @@ Node root= new Node(3);
 		connectSameLevelNode(root.lc);
 		connectSameLevelNode(root.rc);
 	}
+
+
+	public static void main(String[] args) {
+/*
+		Node root= new Node(10);
+		root.lc = new Node(5);
+		root.rc = new Node(8);
+		root.lc.lc = new Node(2);
+		root.lc.rc = new Node(20);
+*/
+//		root.rc.lc = new Node(2);
+//		root.rc.rc = new Node(4);
+/*
+		Node root= new Node(3);
+		root.lc = new Node(5);
+		root.rc = new Node(1);
+		root.lc.lc = new Node(0);
+		root.lc.rc = new Node(6);
+		root.rc.lc = new Node(2);
+		root.rc.rc = new Node(4);
+
+		BST bst = new BST();
+		bst.reverseLevelOrder(root);
+*/
+
+		BST bst= new BST();
+		Node node = bst.getBST();
+		int[] arr= {3,1,0,2,5,4,6};
+		bst.preOrder(node);
+		System.out.println(bst.isPreOrder(arr));
+//		bst.rectifyUtil(root,null,null,null,null);
+		//bst.rectify(root);
+		/*
+		Node rt=bst.btToBst(root);
+		bst.inOrder(rt);
+*/
+
+	}
+
+
+
+	public Node getBST(){
+		Node root= new Node(3);
+		root.lc = new Node(1);
+		root.lc.lc = new Node(0);
+		root.lc.rc = new Node(2);
+		root.rc = new Node(5);
+		root.rc.lc = new Node(4);
+		root.rc.rc = new Node(6);
+		return root;
+	}
+
+
+	public Node getMirroredBST(){
+		Node root= new Node(45);
+		root.lc=new Node(60);
+		root.rc=new Node(20);
+		root.lc.lc= new Node(65);
+		root.lc.rc = new Node(55);
+		root.rc.lc= new Node(21);
+		root.rc.rc= new Node (19);
+		return root;
+	}
+
+	public Node getSumTree(){
+		Node root= new Node(12);
+		root.lc=new Node(2);
+		root.rc=new Node(10);
+		root.lc.lc=new Node(0);
+		root.lc.rc=new Node(2);
+		root.rc.lc= new Node(4);
+		root.rc.rc=new Node(6);
+		return root;
+	}
+	public Node getBSTSample(){
+		Node root= new Node(3);
+		root.lc=new Node(1);
+		root.rc=new Node(5);
+		root.lc.lc=new Node(0);
+		root.lc.rc=new Node(2);
+		root.rc.lc= new Node(4);
+		root.rc.rc=new Node(6);
+		return root;
+	}
+
+
 }
 
 class SumTreeSum{

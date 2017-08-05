@@ -24,7 +24,7 @@ import java.util.List;
 public class Heap {
 
   public int[] array= {1,3,5,7,9,11,13,15,17,19,21};
-    public List<Integer> heap= new ArrayList<>();
+    public static List<Integer> heap= new ArrayList<>();
 
   public static void main(String[] args) {
     Heap hb= new Heap();
@@ -81,7 +81,7 @@ public class Heap {
    * 6. if leftChild only in limit then do recursion with pos=leftChild
    * 7. if rightChild only in limit then do recursion with pos=rightChild
    */
-  public void topDownHeapify(int pos , int size){
+  public static void topDownHeapify(int pos , int size){
     if((!(pos <0)&& size>1)){  //pos not less than 0 and size more than 1
       int leftChildPos = 2 * pos + 1;
       int rightChildPos = 2 * pos + 2;
@@ -135,7 +135,7 @@ public class Heap {
     }
   }
 
-  public void swap(int a, int b){
+  public static void swap(int a, int b){
     int temp= heap.get(a);
     heap.set(a,heap.get(b));
     heap.set(b,temp);

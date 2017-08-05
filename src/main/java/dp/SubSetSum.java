@@ -1,8 +1,5 @@
 package dp;
 
-/**
- * Created by lovebharti on 28/12/16.
- */
   public class SubSetSum {
 
     public static boolean subSetDP(int[] A, int sum) {

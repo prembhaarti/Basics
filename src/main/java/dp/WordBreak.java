@@ -28,6 +28,12 @@ public class WordBreak {
    *  a  _ | _ | _ | _ | T | T
    *  t  _ | _ | _ | _ | _ | F
    *
+   * 1-> i,a,m,m,a,t
+   * 2-> ia,am,mm,ma,at
+   * 3-> iam,amm,mma,mat
+   * 4-> iamm,amma,mmat
+   * 5-> iammma,ammat
+   * 6-> iammat
    */
   public boolean isWordBreakValid(char[] word) {
 
