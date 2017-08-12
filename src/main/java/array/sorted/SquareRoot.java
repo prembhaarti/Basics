@@ -1,4 +1,4 @@
-package bs;
+package array.sorted;
 
 public class SquareRoot {
 

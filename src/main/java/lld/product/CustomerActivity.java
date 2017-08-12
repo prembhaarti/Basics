@@ -1,7 +1,15 @@
 package lld.product;
 
-/**
- * Created by YATRAONLINE\prem.bharti on 5/8/17.
- */
 public class CustomerActivity {
+
+    public boolean purchase(Product product) {
+        return false;
+    }
+
+    public void returnProduct(Product product){
+
+    }
+
+
+
 }
