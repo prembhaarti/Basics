@@ -66,3 +66,17 @@ enum EnumSingleton{
     }
 }
 
+
+class LazyWithStaticClass {
+
+    public static LazyWithStaticClass getInstance(){
+        return Helper.lazyWithStaticClass;
+    }
+
+    static class Helper{
+        private static final LazyWithStaticClass lazyWithStaticClass= new LazyWithStaticClass();
+    }
+
+    private LazyWithStaticClass(){}
+}
+
