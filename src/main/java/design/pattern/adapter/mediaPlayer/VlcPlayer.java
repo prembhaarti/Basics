@@ -1,7 +1,9 @@
 package design.pattern.adapter.mediaPlayer;
 
-/**
- * Created by YATRAONLINE\prem.bharti on 15/8/17.
- */
-public class VlcPlayer {
+public class VlcPlayer implements VideoMediaPlayer {
+
+    @Override
+    public void playVideo(String fileName) {
+        System.out.println("Playing vlc player");
+    }
 }

@@ -1,6 +1,4 @@
-package thread.concurrent.work.locking;
-
-import java.util.Queue;
+package thread.concurrent.work.locking.blockingqueue;
 
 public class Producer implements Runnable{
 

@@ -1,6 +1,4 @@
-package thread.concurrent.work.locking;
-
-import sun.misc.Cleaner;
+package thread.concurrent.work.locking.blockingqueue;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package thread.concurrent.work.locking;
+package thread.concurrent.work.locking.blockingqueue;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -26,9 +26,9 @@ public class BlockingQueue<T> {
         if(queue.isEmpty()){
             System.out.println("Queue is empty");
             try {
-                System.out.println("Going in wait state");
+                System.out.println("Waiting for producers to produce");
                 wait();
-                System.out.println("Releasing wait state");
+                System.out.println("Releasing wait state.");
             } catch (InterruptedException e) {
 
             }

@@ -1,7 +1,10 @@
 package design.pattern.adapter.mediaPlayer;
 
-/**
- * Created by YATRAONLINE\prem.bharti on 15/8/17.
- */
 public class Client {
+
+    public static void main(String[] args) {
+        AudioPlayer audioPlayer = new AudioPlayer();
+        audioPlayer.play("mp3");
+        audioPlayer.play("vlc");
+    }
 }

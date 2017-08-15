@@ -1,4 +1,4 @@
-package thread.concurrent.work.executers;
+package thread.concurrent.work.executers.threadpool;
 
 public class MyJob {
 

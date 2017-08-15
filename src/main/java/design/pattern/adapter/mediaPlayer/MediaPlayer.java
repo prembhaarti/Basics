@@ -1,7 +1,7 @@
 package design.pattern.adapter.mediaPlayer;
 
-/**
- * Created by YATRAONLINE\prem.bharti on 15/8/17.
- */
-public class MediaPlayer {
+public interface MediaPlayer {
+
+    public void play(String fileName);
+
 }

@@ -1,4 +1,4 @@
-package thread.concurrent.work.locking;
+package thread.concurrent.work.locking.blockingqueue;
 
 public class Consumer implements Runnable{
 
