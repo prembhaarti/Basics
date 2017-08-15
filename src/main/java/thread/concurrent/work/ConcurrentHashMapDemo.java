@@ -3,35 +3,33 @@ package thread.concurrent.work;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ConcurrentHashMapDemo implements Runnable
-{
-  
-  List<Integer> keys=Arrays.asList(1,2,3,4,5);
-  List<String>  values=Arrays.asList("prem","satish","naveen","gaurav","monika");
+public class ConcurrentHashMapDemo implements Runnable {
 
-  public static void main(String[] args)
-  {
-      ConcurrentHashMapDemo chmd= new ConcurrentHashMapDemo();
-      ExecutorService service= Executors.newFixedThreadPool(5);
-      service.execute(chmd);
+  List<Integer> keys = Arrays.asList(1, 2, 3, 4, 5);
+  List<String> values = Arrays.asList("prem", "satish", "naveen", "gaurav", "monika");
+  Map<Integer, Integer> map = new ConcurrentHashMap<>();
+
+
+  public static void main(String[] args) {
+    ConcurrentHashMapDemo chmd = new ConcurrentHashMapDemo();
+    ExecutorService service = Executors.newFixedThreadPool(5);
+    service.execute(chmd);
   }
 
-  public void addConcurrentEntry(String key, String value)
-  {
-   // cMap.put(key, value);
+  public void addConcurrentEntry(String key, String value) {
+    // cMap.put(key, value);
   }
 
-  public void addEntry(String key, String value)
-  {
+  public void addEntry(String key, String value) {
 
   }
 
   @Override
-  public void run()
-  {
+  public void run() {
     addConcurrentEntry("1", "Prem0");
     addConcurrentEntry("2", "Prem1");
     addConcurrentEntry("3", "Prem2");

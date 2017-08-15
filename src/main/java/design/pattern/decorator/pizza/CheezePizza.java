@@ -1,8 +1,5 @@
 package design.pattern.decorator.pizza;
 
-/**
- * Created by lovebharti on 12/1/17.
- */
 public class CheezePizza extends PizzaDecorator{
 
   public CheezePizza(Pizza pizza){

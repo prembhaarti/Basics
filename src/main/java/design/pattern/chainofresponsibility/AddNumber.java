@@ -1,8 +1,5 @@
 package design.pattern.chainofresponsibility;
 
-/**
- * Created by lovebharti on 12/1/17.
- */
 public class AddNumber implements Handler {
   private Handler nextHandler;
 

@@ -1,6 +1,8 @@
 package graph;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 
 /**
@@ -20,29 +22,32 @@ public class KnightMove {
     int[] col = {1, -1, 1, -1, -2, -2, 2, 2};
 
     int[][] chessBoard= new int[8][8];
-    int minDis=Integer.MAX_VALUE;
 
-    public void shortestPath(Position source,Position destination,Set<Position> visited,int steps){
-        for(int k=0;k<row.length;k++) {
-            Position newPos= new Position(source.row+row[k],source.col+col[k]);
-            if(!isInsideAndNotVisited(newPos,visited)){
-                continue;
+    Queue<Position> queue = new LinkedList<>();
+    public void shortestPath(Position source, Position destination){
+        queue.add(source);
+        Set<Position> visited = new HashSet<>();
+
+        while (!queue.isEmpty()){
+            Position position=queue.remove();
+            if(position.equals(destination)){
+                System.out.println(position.step);
+                break;
             }
-            if(newPos.equals(destination)){
-                minDis=Math.min(steps+1,minDis);
-                return;
-            }
-            else{
-                visited.add(source);
-                shortestPath(newPos,destination,visited,steps+1);
+            visited.add(position);
+            for(int i=0;i<row.length;i++) {
+                Position newPos=new Position(position.row+row[i],position.col+col[i],position.step+1);
+                if(isInsideAndNotVisited(newPos,visited)){
+                    queue.add(newPos);
+                }
             }
         }
     }
 
     public boolean isInsideAndNotVisited(Position source, Set<Position> visited) {
         return source.row<chessBoard.length && source.row>=0 &&
-           source.col<chessBoard[0].length && source.col>=0 &&
-                !isVisited(source,visited);
+           source.col<chessBoard[0].length && source.col>=0
+                && !isVisited(source,visited);
     }
 
     private boolean isVisited(Position source, Set<Position> visited) {
@@ -51,14 +56,13 @@ public class KnightMove {
 
     public static void main(String[] args) {
         KnightMove km = new KnightMove();
-        km.shortestPath(new Position(1,1),new Position(4,5),new HashSet<Position>(),0);
-        System.out.println(km.minDis);
+        km.shortestPath(new Position(0,0,0),new Position(7,7,0));
     }
 }
 class Position{
         public int row;
         public int col;
-
+        public int step;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,8 +81,9 @@ class Position{
         return result;
     }
 
-    public Position(int row, int col) {
+    public Position(int row, int col,int step) {
         this.row = row;
         this.col = col;
+        this.step=step;
     }
 }

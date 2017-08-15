@@ -45,12 +45,58 @@ public class SortedRotatedArray {
         return index;
     }
 
+    public static int findPivot(int[] arr) {
+        int low=0;
+        int high=arr.length-1;
+        if (arr[low] <= arr[high]) {
+            return 0;
+        }
+        int pivot=-1;
+        while (low < high) {
+            int mid=(low+high)/2;
+            if(mid==0||mid==arr.length-1||arr[mid]>arr[mid+1]){
+                pivot=mid;
+                break;
+            }
+            else if (arr[mid] >= arr[low]) {
+                    low=mid+1;
+            }
+            else{
+                    high=mid-1;
+            }
+        }
+        return pivot;
+    }
+
+    public static int findPivotIncreasingDecreasing(int[] arr) {
+        int low=0;
+        int high=arr.length-1;
+        int pivot=-1;
+        while (low < high) {
+            int mid=(low+high)/2;
+            if(mid==0||mid==arr.length-1||arr[mid]>arr[mid-1] && arr[mid]>arr[mid+1]){
+                pivot=mid;
+                break;
+            }
+            else if (arr[mid] > arr[low]) {
+                low=mid;
+            }
+            else{
+                high=mid;
+            }
+        }
+        return pivot;
+    }
+
+
 
     public static void main(String[] args) {
-        int[] arr= new int[]{3,4,5,6,7,8,9,1,2};
+//        int[] arr= new int[]{3,4,5,6,7,8,9,1,2};
+        int[] arr= new int[]{1,2,3,4,5,6,7};
         for (int i=0;i<arr.length;i++) {
             int index=findElement(arr,0,arr.length-1,arr[i]);
-            System.out.println(index);
+            int pivot = findPivotIncreasingDecreasing(arr);
+            System.out.println(pivot);
         }
     }
 }
