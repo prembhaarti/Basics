@@ -1,4 +1,7 @@
-package design.pattern.observer;
+package design.pattern.observer.subscribers;
+
+import design.pattern.observer.Booking;
+import design.pattern.observer.Subscriber;
 
 public class Hotel extends Subscriber {
 
