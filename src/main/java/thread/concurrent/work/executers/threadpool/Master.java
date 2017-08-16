@@ -43,6 +43,8 @@ public class Master {
         service.shutdown();
     }
 
+
+
     public void completeWithThreadPoolExecutor() throws InterruptedException {
         List<Worker> workers= getWorkersWithJob();
         ThreadPoolExecutor poolExecutor= new ThreadPoolExecutor(3,4,0,TimeUnit.SECONDS,new ArrayBlockingQueue<>(workers.size()));

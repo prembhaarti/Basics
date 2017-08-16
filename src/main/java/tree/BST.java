@@ -651,6 +651,48 @@ public class BST {
 		}
 	}
 
+	int maxLevelLeft=-1;
+	public void leftView(Node root, int level){
+		if (root != null) {
+			if (level > maxLevelLeft) {
+				System.out.println(root.data);
+				maxLevelLeft = level;
+			}
+			leftView(root.lc,level+1);
+			leftView(root.rc,level+1);
+		}
+	}
+
+	int maxLevelRight=-1;
+	public void rightView(Node root, int level){
+		if (root != null) {
+			if (level > maxLevelRight) {
+				System.out.println(root.data);
+				maxLevelRight = level;
+			}
+			leftView(root.rc,level+1);
+			leftView(root.lc,level+1);
+		}
+	}
+
+	int minLevelTop=0;
+	int maxLevelTop=-1;
+
+	public void topView(Node root, int level) {
+		if (root != null) {
+			if (level < minLevelTop) {
+				System.out.println(root.data);
+				minLevelTop = level;
+			}
+			if (level > maxLevelTop) {
+				System.out.println(root.data);
+				maxLevelTop=level;
+			}
+			topView(root.lc);
+			topView(root.rc);
+		}
+	}
+
 	/**
 	 * make root as level 0
 	 * send left to level+1 and right to level-1
