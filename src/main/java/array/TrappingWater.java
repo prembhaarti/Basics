@@ -1,6 +1,5 @@
 package array;
 
-
 public class TrappingWater {
 
   /**
@@ -37,5 +36,4 @@ public class TrappingWater {
     System.out.println(tw.trappedWater(input));
 
   }
-
 }

@@ -12,7 +12,6 @@ public class InversionCount {
    * then start to merge from single element to whole array.
    *
    * count inversion from merge and add previous inversion from mergeSort
-   *
    */
   public int mergeSort(int[] array, int low, int high){
     int count=0;

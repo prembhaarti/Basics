@@ -14,7 +14,7 @@ public class ProductPair {
    *    print when equals product
    */
   public void findProductPair(int[] nums,int product){
-    if(nums.length>1){
+    if(null!=nums && nums.length>1){
       int i=0,j=nums.length-1;
       while(i<j){
         if(nums[i]*nums[j]==product){
@@ -41,6 +41,4 @@ public class ProductPair {
     }
 
   }
-
-
 }

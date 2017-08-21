@@ -743,6 +743,21 @@ public class BST {
 		return 0;
 	}
 
+
+	public int diameterOp(Node root, Height height) {
+		Height left= new Height();
+		Height right= new Height();
+		if (root == null) {
+			height.height=0;
+			return 0;
+		}
+		left.height++;right.height++;
+		int leftDiameter = diameterOp(root.lc, left);
+		int rightDiameter = diameterOp(root.rc, right);
+		height.height = Math.max(left.height, right.height);
+		return Math.max(left.height + right.height + 1, Math.max(leftDiameter, rightDiameter));
+	}
+
 	public Node sortedArrayToBST(int[] array,int low, int high){
 			if(array.length<1 ||low>=high)return null;
 			int mid=(low+high)/2;
@@ -1563,4 +1578,7 @@ class SumTreeSum{
 		this.sum=sum;
 	}
 	int sum;
+}
+class Height{
+	public int height;
 }

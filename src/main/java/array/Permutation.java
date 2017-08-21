@@ -1,8 +1,5 @@
 package array;
 
-/**
- * Created by lovebharti on 30/12/16.
- */
 public class Permutation {
     /* arr[]  ---> Input Array
     data[] ---> Temporary array to store current combination

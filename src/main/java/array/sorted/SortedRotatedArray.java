@@ -3,14 +3,13 @@ package array.sorted;
 public class SortedRotatedArray {
 
     /**
-     *
-     *arr -> {3,4,5,6,7,8,9,1,2}
-     *num -> 8
+     * arr -> {3,4,5,6,7,8,9,1,2}
+     * num -> 8
      *
      * get mid -> if num at arr[mid] return mid
      * check if left side sorted -> arr[low]>arr[mid]
      *      if num in sorted range -> num>arr[low] and num<arr[mid]
-     *          do binary search by low->mid-1
+     *          do binary search by high->mid-1
      *      else pass right side mid+1,high
      * otherwise right side must be sorted
      *      if num in sorted range
@@ -45,6 +44,15 @@ public class SortedRotatedArray {
         return index;
     }
 
+    /**
+     *
+     * if initially arr[low]<=arr[high] -> return 0 that's pivot
+     *
+     * if reach at mid->0/size or mid element is greater than next return mid
+     *
+     * if mid element is greater than low -> return mid+1
+     *
+     */
     public static int findPivot(int[] arr) {
         int low=0;
         int high=arr.length-1;
@@ -68,6 +76,10 @@ public class SortedRotatedArray {
         return pivot;
     }
 
+    /**
+     * middle element should be greater than previous as well as next.
+     *
+     */
     public static int findPivotIncreasingDecreasing(int[] arr) {
         int low=0;
         int high=arr.length-1;
@@ -87,8 +99,6 @@ public class SortedRotatedArray {
         }
         return pivot;
     }
-
-
 
     public static void main(String[] args) {
 //        int[] arr= new int[]{3,4,5,6,7,8,9,1,2};

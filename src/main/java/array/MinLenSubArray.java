@@ -42,5 +42,4 @@ public class MinLenSubArray {
     MinLenSubArray mlsa= new MinLenSubArray();
     System.out.println(mlsa.minLenSubArrayGreaterThanValueK(arr,11));
   }
-
 }

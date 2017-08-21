@@ -5,8 +5,8 @@ public class SquareRoot {
   /**
    * get mid from low and high
    * if mid*mid > square
-   *  then high=mid-1
-   *  else low=mid+1
+   *  then high = mid-1
+   *  else low = mid+1
    *
    *  O(logn)
    *
@@ -52,6 +52,4 @@ public class SquareRoot {
 
     System.out.println(sq.squareRootIt(num));
   }
-
-
 }
