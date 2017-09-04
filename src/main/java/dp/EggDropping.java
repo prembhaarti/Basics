@@ -56,6 +56,6 @@ public class EggDropping {
 
   public static void main(String[] args) {
     EggDropping ed= new EggDropping();
-    System.out.println(ed.getMinAttemptToBreakEgg(100, 2));
+    System.out.println(ed.getMinAttemptToBreakEgg(5, 3));
   }
 }

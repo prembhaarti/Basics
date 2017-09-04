@@ -33,7 +33,6 @@ public class SmallestWindow {
               hash_str[s[start]] > hash_pat[s[start]]) {
             if (hash_str[s[start]] > hash_pat[s[start]])
               hash_str[s[start]]--;
-
             start++;
           }  
           int len = i-start;

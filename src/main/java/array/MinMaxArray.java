@@ -48,6 +48,22 @@ public class MinMaxArray {
     return minArray;
   }
 
+  public static int[] makeMinFromRight(int[] arr){
+    int minArray[] = Arrays.copyOf(arr, arr.length); // don't want to change original array
+
+
+    int min=Integer.MAX_VALUE;
+    for(int i=arr.length-1;i>=0;i--){
+      if(minArray[i]< min){
+        min=minArray[i];
+      }
+      else{
+        minArray[i]=min;
+      }
+    }
+    return minArray;
+  }
+
 
   public static void main(String[] args) {
     int[] arr = {3, 15, 2, 12, 4, 6, 9, 0};

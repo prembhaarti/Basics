@@ -2,9 +2,6 @@ package graph;
 
 import java.util.Comparator;
 
-/**
- * Created by lovebharti on 8/8/16.
- */
 public class EdgeComparator implements Comparator<Edge> {
   @Override
   public int compare(Edge edge1, Edge edge2) {

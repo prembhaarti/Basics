@@ -11,7 +11,7 @@ public class GNode<T> implements Comparable<T> {
 	private List<GNode<T>> vertices = new ArrayList<GNode<T>>();
 
 	/**
-	 * @param startNode = node from where you'll start to traverse
+	 * startNode = node from where you'll start to traverse
 	 * @param addToVertice = node to which you want to add new node
 	 * @param dataNode = data you want to feed in new node to be created.
 	 */

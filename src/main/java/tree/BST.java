@@ -105,6 +105,58 @@ public class BST {
 		}
 	}
 
+
+	public void printKDownDistance(Node root, int k) {
+		if(root!=null){
+			if (k == 0) {
+				System.out.println(root.data);
+			}
+			printKDownDistance(root.lc, k - 1);
+			printKDownDistance(root.rc, k - 1);
+		}
+	}
+
+	public void printAtKDistance(Node root, int data, int k) {
+		printKDownDistance(root,k);
+		printKDistanceExceptDown(root,data,k);
+	}
+	public int printKDistanceExceptDown(Node root, int data,int k) {
+		if(root==null) return -1;
+		if (root.data == data) {
+			printKDownDistance(root,k);
+			return 1;
+		}
+		int leftPathDist = pathLength(root.lc, data);
+		int rightPathDist = pathLength(root.rc, data);
+		if(leftPathDist<1 && rightPathDist<1) return -1;
+		if(leftPathDist<1 && rightPathDist>0){
+			if(rightPathDist==k){
+				System.out.println(root.data);
+			}
+			if(rightPathDist>k){
+				printKDistanceExceptDown(root.rc,data,k);
+			}
+			if(rightPathDist<k){
+				printKDownDistance(root.lc,k-rightPathDist-1);
+				printKDistanceExceptDown(root.rc,data,k);
+			}
+			return rightPathDist+1;
+		}
+		if(rightPathDist<1 && leftPathDist>0){
+			if(leftPathDist==k){
+				System.out.println(root.data);
+			}
+			if(leftPathDist>k){
+				printKDistanceExceptDown(root.lc,data,k);
+			}
+			if(leftPathDist<k){
+				printKDownDistance(root.rc,k-leftPathDist-1);
+//				printKDistanceNode(root.lc,data,k);
+			}
+			return leftPathDist+1;
+		}
+		return -1;
+	}
 /*
 	public void levelOrderTraversal(Node root){
 		if(root!=null){
@@ -1486,6 +1538,55 @@ public class BST {
 		connectSameLevelNode(root.rc);
 	}
 
+	public void printExtremeNode(Node root) {
+		if (root == null) {
+			return;
+		}
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(root);
+		while (queue.size() >= 1) {
+			int size=queue.size();
+			if(size==1){
+				Node removed=queue.remove();
+				System.out.println(removed.data);
+				if (removed.lc != null) {
+					queue.add(removed.lc);
+				}
+				if (removed.rc != null) {
+					queue.add(removed.rc);
+				}
+			}
+			else{
+				for(int i=0;i<size;i++) {
+					Node removed=queue.remove();
+					if(i==0||i==size-1){
+						System.out.println(removed.data);
+					}
+					if (removed.lc != null) {
+						queue.add(removed.lc);
+					}
+					if (removed.rc != null) {
+						queue.add(removed.rc);
+					}
+				}
+			}
+		}
+	}
+
+/*
+	public int anyPathSum(Node root,int sum) {
+		if (root == null) {
+			return 0;
+		}
+		int leftSum = anyPathSum(root.lc,sum);
+		int rightSum = anyPathSum(root.rc,sum);
+		if (leftSum + rightSum + root.data == sum) {
+
+		}
+
+	}
+*/
+
 
 	public static void main(String[] args) {
 /*
@@ -1494,7 +1595,9 @@ public class BST {
 		root.rc = new Node(8);
 		root.lc.lc = new Node(2);
 		root.lc.rc = new Node(20);
+
 */
+
 //		root.rc.lc = new Node(2);
 //		root.rc.rc = new Node(4);
 /*
@@ -1511,10 +1614,17 @@ public class BST {
 */
 
 		BST bst= new BST();
-		Node node = bst.getBST();
+//		Node root=bst.getBinaryTree();
+//		bst.printAtKDistance(root, 2, 3);
+
+		Node root=bst.getBST();
+		bst.printExtremeNode(root);
+
+//		bst.getb
+			/*	Node node = bst.getBST();
 		int[] arr= {3,1,0,2,5,4,6};
 		bst.preOrder(node);
-		System.out.println(bst.isPreOrder(arr));
+		System.out.println(bst.isPreOrder(arr));*/
 //		bst.rectifyUtil(root,null,null,null,null);
 		//bst.rectify(root);
 		/*
@@ -1522,6 +1632,22 @@ public class BST {
 		bst.inOrder(rt);
 */
 
+	}
+
+
+	public Node getBinaryTree() {
+		Node root = new Node(1);
+		root.lc = new Node(2);
+		root.lc.lc = new Node(4);
+		root.lc.rc= new Node(5);
+		root.rc = new Node(3);
+		root.rc.lc = new Node(7);
+		root.rc.rc = new Node(6);
+		root.rc.lc.lc = new Node(8);
+		root.rc.lc.lc.lc = new Node(9);
+		root.rc.lc.lc.rc = new Node(11);
+		root.rc.lc.lc.lc.rc = new Node(10);
+		return root;
 	}
 
 
