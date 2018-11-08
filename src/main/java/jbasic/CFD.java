@@ -8,8 +8,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import tree.BST;
-import tree.Node;
+import basics.tree.BST;
+import basics.tree.Node;
 
 public class CFD {
 

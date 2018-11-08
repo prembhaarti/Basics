@@ -28,7 +28,7 @@ public class Test2 {
 /*
       for(int j=0;j<rows;j++){
         for(int i=0;i<cols;i++){
-          matrix[j][i]=s.nextInt();
+          basics.matrix[j][i]=s.nextInt();
         }
       }
 */
