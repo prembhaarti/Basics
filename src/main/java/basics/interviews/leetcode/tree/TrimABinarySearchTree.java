@@ -2,6 +2,8 @@ package basics.interviews.leetcode.tree;//Given a binary search tree and the low
 //tree so that all its elements lies in [L, R] (R >= L). You might need to change the root 
 //of the tree, so the result should return the new root of the trimmed binary search tree.
 
+import basics.interviews.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

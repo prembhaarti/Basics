@@ -99,7 +99,7 @@ public class LongestIncreasingSubsequence {
     }
 
   public static void main(String[] args) {
-    int[] arr= {7,5,9,1,8,2,0,4,-1,6};
+    int[] arr= {10,22,9,33,21,50,41,60,80};
     int[] arr1= {1,2,3};
     LongestIncreasingSubsequence lis= new LongestIncreasingSubsequence();
     System.out.println("\nLargest increasing subsequence:"+lis.lis(arr));

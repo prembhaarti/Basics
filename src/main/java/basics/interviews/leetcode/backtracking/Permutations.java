@@ -11,6 +11,10 @@ package basics.interviews.leetcode.backtracking;//Given a collection of distinct
   //[3,2,1]
 //]
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 class Permutations {
     public List<List<Integer>> permute(int[] nums) {
         LinkedList<List<Integer>> result = new LinkedList<List<Integer>>();

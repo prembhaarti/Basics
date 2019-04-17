@@ -43,7 +43,8 @@ public class MinimumJumpToReachEnd {
 
   public static void main(String[] args) {
     MinimumJumpToReachEnd mjtre= new MinimumJumpToReachEnd();
-    int[] arr= {2,3,1,1,2,4,2,0,1,1};
+//    int[] arr= {2,3,1,1,2,4,2,0,1,1};
+    int[] arr= {1,3,5,8,9,2,6,7,6,8,9};
     int[] result = new int[arr.length];
     int[] path = new int[arr.length];
     mjtre.tempArray(arr,result,path);

@@ -14,6 +14,8 @@ package basics.interviews.leetcode.tree;// Invert a binary tree.
 //  / \   / \
 // 9   6 3   1
 
+import basics.interviews.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

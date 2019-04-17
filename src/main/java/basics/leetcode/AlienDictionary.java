@@ -75,10 +75,10 @@ public class AlienDictionary {
         int count = 0;
 
         for (String word : words) {
-            for (char c : word.toCharArray()) {
-                if (degree[c - 'a'] == 0) {
+            for (char ch : word.toCharArray()) {
+                if (degree[ch - 'a'] == 0) {
                     count++;
-                    degree[c - 'a'] = 1;
+                    degree[ch - 'a'] = 1;
                 }
             }
         }

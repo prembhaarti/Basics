@@ -2,6 +2,8 @@ package basics.interviews.leetcode.string;// Given a roman numeral, convert it t
 
 // Input is guaranteed to be within the range from 1 to 3999
 
+import java.util.HashMap;
+
 public class RomanToInteger {
     public int romanToInt(String s) {
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();

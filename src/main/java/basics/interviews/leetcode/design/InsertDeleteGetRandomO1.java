@@ -29,6 +29,9 @@ package basics.interviews.leetcode.design;//Design a data structure that support
 // Since 2 is the only number in the set, getRandom always return 2.
 //randomSet.getRandom();
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 class RandomizedSet {
     HashMap<Integer, Integer> map;
     ArrayList<Integer> values;

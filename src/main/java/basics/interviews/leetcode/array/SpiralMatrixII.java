@@ -10,7 +10,7 @@ package basics.interviews.leetcode.array;// Given an integer n, generate a squar
 //  [ 7, 6, 5 ]
 // ]
 
-public class SpiralMatrix {
+public class SpiralMatrixII {
     public int[][] generateMatrix(int n) {
         int[][] spiral = new int[n][n];
         

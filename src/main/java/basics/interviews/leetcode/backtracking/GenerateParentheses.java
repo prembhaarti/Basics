@@ -10,6 +10,9 @@ package basics.interviews.leetcode.backtracking;//Given n pairs of parentheses, 
   //"()()()"
 //]
 
+import java.util.ArrayList;
+import java.util.List;
+
 class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<String>();

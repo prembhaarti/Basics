@@ -56,7 +56,7 @@ public class KthMinRowCol {
 
     public static void main(String[] args) {
 //        for(int i=1;i<17;i++) {
-            System.out.println(getKthElement(matrix, 16));
+            System.out.println(getKthElement(matrix, 10));
 //        }
     }
 

@@ -2,6 +2,8 @@ package basics.interviews.leetcode.tree;// Given a binary search tree and a node
 
 // Note: If the given node has no in-order successor in the tree, return null.
 
+import basics.interviews.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

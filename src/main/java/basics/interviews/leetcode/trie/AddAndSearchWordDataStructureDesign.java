@@ -17,7 +17,7 @@ package basics.interviews.leetcode.trie;// Design a data structure that supports
 // Note:
     // You may assume that all words are consist of lowercase letters a-z.
 
-public class AddAndSearchWordDataStructure {
+public class AddAndSearchWordDataStructureDesign {
     public class TrieNode {
         public TrieNode[] children = new TrieNode[26];
         public String item = "";

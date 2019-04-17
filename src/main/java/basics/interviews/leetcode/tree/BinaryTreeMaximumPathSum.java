@@ -10,6 +10,8 @@ package basics.interviews.leetcode.tree;// Given a binary tree, find the maximum
 //      2   3
 // Return 6.
 
+import basics.interviews.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

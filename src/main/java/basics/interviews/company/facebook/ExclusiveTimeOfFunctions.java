@@ -27,9 +27,12 @@ package basics.interviews.company.facebook;//Given the running logs of n functio
 //Functions could be called recursively, and will always end.
 //1 <= n <= 100
 
+import java.util.List;
+import java.util.Stack;
+
 class ExclusiveTimeOfFunctions {
     public int[] exclusiveTime(int n, List<String> logs) {
-        Stack<Integer> stack = new Stack <Integer>();
+        Stack<Integer> stack = new Stack<Integer>();
         int[] result = new int[n];
         String[] current = logs.get(0).split(":");
         stack.push(Integer.parseInt(current[0]));

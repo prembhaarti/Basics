@@ -4,6 +4,8 @@ package basics.interviews.leetcode.stack;//Given a list of daily temperatures, p
 //
 //Note: The length of temperatures will be in the range [1, 30000]. Each temperature will be an integer in the range [30, 100].
 
+import java.util.Stack;
+
 class DailyTemperatures {
     public int[] dailyTemperatures(int[] temperatures) {
         int[] result = new int[temperatures.length];

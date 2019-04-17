@@ -4,6 +4,10 @@ package basics.interviews.leetcode.stack;// Implement an iterator over a binary 
 
 // Note: next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the height of the tree.
 
+import basics.interviews.TreeNode;
+
+import java.util.Stack;
+
 /**
  * Definition for binary tree
  * public class TreeNode {
@@ -17,7 +21,7 @@ package basics.interviews.leetcode.stack;// Implement an iterator over a binary 
 public class BinarySearchTreeIterator {
     Stack<TreeNode> stack;
 
-    public BSTIterator(TreeNode root) {
+    public BinarySearchTreeIterator(TreeNode root) {
         stack = new Stack<TreeNode>();
         
         while(root != null) {

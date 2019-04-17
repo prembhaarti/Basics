@@ -2,6 +2,8 @@ package basics.interviews.leetcode.string;// Given a string containing just the 
 
 // The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 
+import java.util.Stack;
+
 public class ValidParentheses {
     public boolean isValid(String s) {
         if(s.length() % 2 == 1) {

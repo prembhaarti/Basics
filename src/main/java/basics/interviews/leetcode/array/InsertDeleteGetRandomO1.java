@@ -29,12 +29,15 @@ package basics.interviews.leetcode.array;//Design a data structure that supports
 // Since 2 is the only number in the set, getRandom always return 2.
 //randomSet.getRandom();
 
-class RandomizedSet {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+class InsertDeleteGetRandomO1 {
     HashMap<Integer, Integer> map;
     ArrayList<Integer> values;
 
     /** Initialize your data structure here. */
-    public RandomizedSet() {
+    public InsertDeleteGetRandomO1() {
         map = new HashMap<Integer, Integer>();
         values = new ArrayList<Integer>();
     }

@@ -15,6 +15,8 @@ package basics.interviews.leetcode.trie;// Given a set of words (without duplica
     // Word length is at least 1 and at most 5.
     // Each word contains only lowercase English alphabet a-z.
 
+import java.util.*;
+
 public class WordSquares {
     public List<List<String>> wordSquares(String[] words) {
         List<List<String>> ret = new ArrayList<List<String>>();

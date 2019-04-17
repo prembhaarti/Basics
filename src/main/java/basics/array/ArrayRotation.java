@@ -30,6 +30,6 @@ public class ArrayRotation {
     }
 
     public static void main(String[] args) {
-        rotateByK(arr,2);
+        rotateByK(arr,4);
     }
 }

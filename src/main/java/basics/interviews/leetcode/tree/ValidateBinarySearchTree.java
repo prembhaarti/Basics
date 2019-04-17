@@ -16,6 +16,8 @@ package basics.interviews.leetcode.tree;// Given a binary tree, determine if it 
 //   2   3
 // Binary tree [1,2,3], return false.
 
+import basics.interviews.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

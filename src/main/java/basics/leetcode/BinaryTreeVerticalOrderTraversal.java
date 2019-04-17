@@ -57,7 +57,7 @@ public class BinaryTreeVerticalOrderTraversal {
      ]
 
      1, dfs max min
-     2, bfs
+     2, breadth
 
      time : O(n)
      space : O(n)

@@ -6,7 +6,7 @@ package basics.interviews.leetcode.string;// Given two binary strings, return th
 // Return "100"
 
 public class AddBinary {
-    public String addBinary(String a, String b) {
+    public static String addBinary(String a, String b) {
         StringBuilder result = new StringBuilder();
         
         int carry = 0;
@@ -33,5 +33,9 @@ public class AddBinary {
         }
 
         return result.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(addBinary("111", "1"));
     }
 }

@@ -7,6 +7,9 @@ package basics.interviews.company.facebook;// Given a string that contains only 
 // "00", 0 -> ["0+0", "0-0", "0*0"]
 // "3456237490", 9191 -> []
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExpressionAddOperators {
     public List<String> addOperators(String num, int target) {
         List<String> result = new ArrayList<String>();

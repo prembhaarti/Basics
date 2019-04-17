@@ -10,6 +10,8 @@ package basics.interviews.leetcode.tree;// Find the sum of all left leaves in a 
 
 // There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
 
+import basics.interviews.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {

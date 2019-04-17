@@ -2,6 +2,8 @@ package basics.dp;
 
 /**
  * Created by lovebharti on 2/1/17.
+ *
+ * How many ways 129 can be decode in alphbets : 2 (ABI), (LI)
  */
 public class DecodeWays {
 
@@ -19,7 +21,7 @@ public class DecodeWays {
     if(word.length==1) {return 1;}
     if(word.length>1){
       for(int i=2;i<=word.length;i++){
-        if((word[i-1]>'0' && word[i-1]<='6') && (word[i-2]=='1' || word[i-2]=='2')){
+        if((word[i-1]>='0' && word[i-1]<='6') && (word[i-2]=='1' || word[i-2]=='2')){
           count[i]=count[i-1]+count[i-2];
         }
         else{

@@ -8,7 +8,7 @@ package basics.interviews.company.facebook;// The count-and-say sequence is the 
 
 // Note: The sequence of integers will be represented as a string.
 
-public class Solution {
+public class CountAndSay {
 
     public String countAndSay(int n) {
         

@@ -9,6 +9,8 @@ package basics.interviews.company.bloomberg;//Given a string, find the first non
 //return 2.
 //Note: You may assume the string contain only lowercase letters.
 
+import java.util.HashMap;
+
 class FirstUniqueCharacterInAString {
     public int firstUniqChar(String s) {
         HashMap<Character, Integer> characters = new HashMap<Character, Integer>();

@@ -7,7 +7,7 @@ package basics.interviews.leetcode.array;// Given an array of n integers where n
 // Follow up:
 // Could you solve it with constant space complexity? (Note: The output array does not count as extra space for the purpose of space complexity analysis.)
 
-public class ProductOfArrayExceptSelf {
+public class ProductofArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
         int[] result = new int[n];

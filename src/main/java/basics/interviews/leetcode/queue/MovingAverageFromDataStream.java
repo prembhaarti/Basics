@@ -7,6 +7,9 @@ package basics.interviews.leetcode.queue;// Given a stream of integers and a win
 // m.next(3) = (1 + 10 + 3) / 3
 // m.next(5) = (10 + 3 + 5) / 3
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Your MovingAverage object will be instantiated and called as such:
  * MovingAverage obj = new MovingAverage(size);
@@ -19,7 +22,7 @@ public class MovingAverageFromDataStream {
     Queue<Integer> window;
 
     /** Initialize your data structure here. */
-    public MovingAverage(int size) {
+    public MovingAverageFromDataStream(int size) {
         this.maxSize = size;
         window = new LinkedList<Integer>();
     }
