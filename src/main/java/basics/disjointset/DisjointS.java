@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  Disjoint set is set of no. of non-overlapping/disjoint set.
+ *  Disjoint set is set of no. of non-overlapping/exclusive set.
  *
  *  One element of set -> disjoint node (data, rank, parent)
  *  - default rank of node is 0

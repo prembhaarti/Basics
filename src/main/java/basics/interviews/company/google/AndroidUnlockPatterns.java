@@ -82,4 +82,9 @@ public class AndroidUnlockPatterns {
         //return total number
         return totalNumber;
     }
+
+    public static void main(String[] args) {
+        AndroidUnlockPatterns aup = new AndroidUnlockPatterns();
+        System.out.println(aup.numberOfPatterns(1,1));
+    }
 }

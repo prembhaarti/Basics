@@ -18,6 +18,8 @@ public class MinDistanceBetweenTwoNumbers {
     int minDistance=-1;
     int captured=0; //not found any 0 , found first 1, found second 2
 
+
+
     for (int i = 0; i <arr.length;i++){
       if(arr[i]==a||arr[i]==b){
         if(arr[i]==a){
@@ -44,9 +46,11 @@ public class MinDistanceBetweenTwoNumbers {
   }
 
   public static void main(String[] args) {
-    int input[] = {7,4,1,5,6,9,10,4,6,8};
-    MinDistanceBetweenTwoNumbers mbtn= new MinDistanceBetweenTwoNumbers();
-    System.out.println(mbtn.findMinDistance(input,4,9));
+    String x = (String)null;
+    System.out.println(x);
+//    int input[] = {7,4,1,5,6,9,10,4,6,8};
+//    MinDistanceBetweenTwoNumbers mbtn= new MinDistanceBetweenTwoNumbers();
+//    System.out.println(mbtn.findMinDistance(input,4,9));
   }
 
 

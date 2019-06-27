@@ -72,9 +72,9 @@ public class CoinChangeNWay {
   }
 
   public static void main(String[] args) {
-    int num[]={1,2,3};
+    int num[]={1,2,5};
     CoinChangeNWay cc = new CoinChangeNWay();
-    int[][] matrix=cc.createTemp(num,4);
+    int[][] matrix=cc.createTemp(num,12);
     System.out.println(cc.printMatrix(matrix));
 
   }

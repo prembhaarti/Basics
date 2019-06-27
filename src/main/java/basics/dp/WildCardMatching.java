@@ -10,14 +10,14 @@ public class  WildCardMatching {
 
   /**
    *     ""  _   r   _   m   *   m
-   *  "" ToString | F | F | F | F | F | F |
-   *  p  F | ToString | F | F | F | F | F |
-   *  r  F | F | ToString | F | F | F | F |
-   *  e  F | F | F | ToString | F | F | F |
-   *  m  F | F | F | F | ToString | ToString | F |
-   *  i  F | F | F | F | F | ToString | F |
-   *  u  F | F | F | F | F | ToString | F |
-   *  m  F | F | F | F | F | ToString | ToString |
+   *  "" T | F | F | F | F | F | F |
+   *  p  F | T | F | F | F | F | F |
+   *  r  F | F | T | F | F | F | F |
+   *  e  F | F | F | T | F | F | F |
+   *  m  F | F | F | F | T | T | F |
+   *  i  F | F | F | F | F | T | F |
+   *  u  F | F | F | F | F | T | F |
+   *  m  F | F | F | F | F | T | T |
    *
    *  if word's character and pattern's character matches or pattern contains "_"
    *  then take one from above left diagonal

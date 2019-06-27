@@ -18,11 +18,11 @@ public class SumSubSet {
    *
    *
    *    0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
-   * 0  ToString | F | F | F | F | F | F | F
-   * 1  ToString | ToString | F | F | F | F | F | F
-   * 2  ToString | ToString | ToString | ToString | F | F | F | F
-   * 3  ToString | ToString | ToString | ToString | ToString | ToString | ToString | F
-   * 6  ToString | ToString | ToString | ToString | ToString | ToString | ToString | ToString
+   * 0  T | F | F | F | F | F | F | F
+   * 1  T | T | F | F | F | F | F | F
+   * 2  T | T | T | T | F | F | F | F
+   * 3  T | T | T | T | T | T | T | F
+   * 6  T | T | T | T | T | T | T | T
    *
    * result = true
    */

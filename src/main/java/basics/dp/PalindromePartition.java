@@ -89,7 +89,7 @@ public class PalindromePartition {
 
   public static void main(String[] args) {
     PalindromePartition palin= new PalindromePartition();
-    char[] word="banana".toCharArray();
+    char[] word="amasastat".toCharArray();
     int[][] palinMatrix= palin.palid(word);
     System.out.println("Min no. of cuts required:"+palin.minNoOfCuts(word, palinMatrix));
   }
