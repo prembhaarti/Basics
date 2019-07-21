@@ -32,7 +32,7 @@ public class BellManFord {
 	public void bellManFord(Vertex source) {
 		source.setDistance(0);
 
-		for (Vertex vertex : vertices) {
+		for (int vertexCount=0; vertexCount<vertices.size(); vertexCount++) {
 			for (Edge edge : edgeList) {
 				Vertex u = edge.getSource();
 				if (u.getDistance() == Double.MAX_VALUE)

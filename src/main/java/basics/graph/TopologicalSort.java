@@ -7,7 +7,7 @@ import java.util.List;
  * Topological sort: O(V+E)
  *    sort in a way that least dependent will come first and most dependent in the last.
  *
- *    get all vertices from basics.graph
+ *    get all vertices from graph
  *    create visited list of vertex
  *
  *    create resultList

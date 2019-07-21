@@ -8,16 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Date 10/01/2014
- * @author Tushar Roy
  *
- * Given a directed basics.graph, find all strongly connected components in this basics.graph.
+ * Given a directed basics.graph, find all strongly connected components in this graph.
  * We are going to use Kosaraju's algorithm to find strongly connected component.
  *
  * Algorithm
  * Create a order of vertices by finish time in decreasing order.
- * Reverse the basics.graph
- * Do a DFS on reverse basics.graph by finish time of vertex and created strongly connected
+ * Reverse the graph
+ * Do a DFS on reverse graph by finish time of vertex and created strongly connected
  * components.
  *
  * Runtime complexity - O(V + E)
