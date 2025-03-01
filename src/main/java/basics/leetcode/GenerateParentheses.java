@@ -20,7 +20,7 @@ public class GenerateParentheses {
      "()()()"
      ]
 
-
+     .
      time : O(n!) (2^n)
      space : O(n)
 

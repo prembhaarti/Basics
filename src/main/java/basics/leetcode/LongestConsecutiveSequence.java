@@ -1,7 +1,5 @@
 package basics.leetcode;
 
-import jdk.nashorn.internal.objects.NativeUint8Array;
-
 import java.util.HashSet;
 
 /**

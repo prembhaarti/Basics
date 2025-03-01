@@ -1,5 +1,7 @@
 package basics.array;
 
+import java.util.Arrays;
+
 public class TrappingWater {
 
   /**
@@ -19,6 +21,7 @@ public class TrappingWater {
     int totalTrappedWater=0;
 
     int rightToLeft[]=MinMaxArray.makeMaxArray(towers);
+//    System.out.println();
     int maxHeightFromLeft=0;
     for(int i=0;i<towers.length;i++){
       if(towers[i]>maxHeightFromLeft){

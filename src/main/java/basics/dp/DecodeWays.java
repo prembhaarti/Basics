@@ -12,7 +12,13 @@ public class DecodeWays {
     System.out.println(dw.decodeWays("129".toCharArray()));
   }
 
-
+  /**
+   * if last num is 1-> 6 and second last is 1->2 then fibonacci
+   * else
+   *
+   * @param word
+   * @return
+   */
   public int decodeWays(char[] word){
     int[] count= new int[word.length+1];
     count[0]=1;

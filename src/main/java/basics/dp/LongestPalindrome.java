@@ -37,15 +37,15 @@ public class LongestPalindrome {
 
     for(int j=0;j<word.length;j++){
       for(int i=0;i+j<word.length;i++){
-        if(word[i]==word[i+j]){
-          if(j<=1) {
+        if(word[i]==word[i+j]){ // if palindrome found
+          if(j<=1) { // this condition matches only for single character palindrome
             matrix[i][i + j] = 1;
             if(j+1>maxLen) maxLen=j+1;
           }
-          else{
+          else{ // this condition comes if palindrome found and trim from start (i+1) and last (i+j-1) and check if that was palindrome
             if(matrix[i+1][i+j-1]==1){
-              matrix[i][i + j] = 1;
-              if(j+1>maxLen) maxLen=j+1;
+              matrix[i][i + j] = 1; // if after trimming it was palindrome then make this palindrome
+              if(j+1>maxLen) maxLen=j+1; // check if this palindrome length is greater and set it.
             }
           }
         }
@@ -59,6 +59,6 @@ public class LongestPalindrome {
   public static void main(String[] args) {
     LongestPalindrome lp = new LongestPalindrome();
     System.out.println("Longest Palindrome:"+lp.palid("banana".toCharArray()));
-    System.out.println("Longest Palindrome:"+lp.palid("aaaa".toCharArray()));
+    System.out.println("Longest Palindrome:"+lp.palid("aa".toCharArray()));
   }
 }

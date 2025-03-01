@@ -25,7 +25,7 @@ public class MinPathCost {
    *
    *  1 | 3  | 6
    *  5 | 11 | 8    SUM MATRIX
-   *  6 | 11 | 11
+   *  6 | 11 | 11o
    *
    */
   public int getMin(int[][] cost,int row, int col){

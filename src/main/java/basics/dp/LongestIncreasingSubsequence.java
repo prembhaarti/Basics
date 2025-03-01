@@ -46,21 +46,21 @@ public class LongestIncreasingSubsequence {
         }
       }
       //back track to print position we've already found max increasing subsequence length
-      int lastPos=arr.length-1;
-      while(lastPos>=0){
-        if(result[lastPos]==max){ //got max position
-          break;
-        }
-        lastPos--;
-      }
-      while(result[lastPos]>=1){ //until reach from maxsubsequence length is 1
-        System.out.print(arr[lastPos]+" ");
-        lastPos=path[lastPos];
-        if(result[lastPos]==1){ //
-          System.out.print(arr[lastPos]+" ");
-          break;
-        }
-      }
+//      int lastPos=arr.length-1;
+//      while(lastPos>=0){
+//        if(result[lastPos]==max){ //got max position
+//          break;
+//        }
+//        lastPos--;
+//      }
+//      while(result[lastPos]>=1){ //until reach from maxsubsequence length is 1
+//        System.out.print(arr[lastPos]+" ");
+//        lastPos=path[lastPos];
+//        if(result[lastPos]==1){ //
+//          System.out.print(arr[lastPos]+" ");
+//          break;
+//        }
+//      }
 /*
       System.out.println();
       for(int i=0;i<result.length;i++){
@@ -103,7 +103,7 @@ public class LongestIncreasingSubsequence {
     int[] arr1= {1,2,3};
     LongestIncreasingSubsequence lis= new LongestIncreasingSubsequence();
     System.out.println("\nLargest increasing subsequence:"+lis.lis(arr));
-    System.out.println("\nAll possible subsequence count:"+lis.allPossiblelisCount(arr1));
+//    System.out.println("\nAll possible subsequence count:"+lis.allPossiblelisCount(arr1));
   }
 
 }

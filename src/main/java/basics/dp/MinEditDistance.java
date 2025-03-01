@@ -13,7 +13,7 @@ import basics.util.CodeUtil;
  *  if w1[j]==w2[i]
  *        take 1 from above diagonally
  *  else
- *        take 1+ Min of left, up and diagonally
+ *        take 1+ Min of left(subtract), up(add) and diagonally
  */
 public class MinEditDistance {
   /**
