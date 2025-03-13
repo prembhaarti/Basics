@@ -59,6 +59,10 @@ public class RunningMedian {
         }
     }
 
+    /**
+     *
+     * @param num
+     */
     private static void addNumber(int num) {
         if (mxHeap.isEmpty() || num < mxHeap.peek()) {
             mxHeap.offer(num);

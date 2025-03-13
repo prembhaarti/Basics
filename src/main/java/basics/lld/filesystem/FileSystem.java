@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class FileSystem {
-    private Trie root = new Trie();
+    private DTrie root = new DTrie();
 
     public FileSystem() {
     }
 
     public List<String> ls(String path) {
         List<String> ans = new ArrayList<>();
-        Trie node = root.search(path);
+        DTrie node = root.search(path);
         if (node == null) {
             return ans;
         }
@@ -33,12 +33,12 @@ public class FileSystem {
     }
 
     public void addContentToFile(String filePath, String content) {
-        Trie node = root.insert(filePath, true);
+        DTrie node = root.insert(filePath, true);
         node.content.append(content);
     }
 
     public String readContentFromFile(String filePath) {
-        Trie node = root.search(filePath);
+        DTrie node = root.search(filePath);
         if(Objects.isNull(node)){
             return null;
         }

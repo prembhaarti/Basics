@@ -3,19 +3,19 @@ package basics.lld.filesystem;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Trie {
+public class DTrie {
     String name;
     boolean isFile;
     StringBuilder content = new StringBuilder();
-    Map<String, Trie> children = new HashMap<>();
+    Map<String, DTrie> children = new HashMap<>();
 
-    Trie insert(String path, boolean isFile) {
-        Trie node = this;
+    DTrie insert(String path, boolean isFile) {
+        DTrie node = this;
         String[] ps = path.split("/");
         for (int i = 1; i < ps.length; ++i) {
             String p = ps[i];
             if (!node.children.containsKey(p)) {
-                node.children.put(p, new Trie());
+                node.children.put(p, new DTrie());
             }
             node = node.children.get(p);
         }
@@ -26,8 +26,8 @@ public class Trie {
         return node;
     }
 
-    Trie  search(String path) {
-        Trie node = this;
+    DTrie search(String path) {
+        DTrie node = this;
         String[] ps = path.split("/");
         for (int i = 1; i < ps.length; ++i) {
             String p = ps[i];

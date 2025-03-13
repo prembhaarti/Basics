@@ -9,7 +9,7 @@ public class Board {
     private final int rows = 6;
     private final int cols = 7;
     private final char[][] grid;
-    private final char EMPTY_SLOT = '.';
+    private final char EMPTY_SLOT = '_';
 
     private static final WinStrategy winStrategy = new WinStrategy(board.rows, board.cols, board.grid);
 
@@ -34,6 +34,7 @@ public class Board {
     }
 
     public boolean checkWin(char disc) {
+
         return winStrategy.checkWin(disc);
     }
 

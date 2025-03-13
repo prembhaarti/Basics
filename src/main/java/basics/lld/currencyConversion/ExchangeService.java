@@ -20,6 +20,6 @@ class ExchangeService {
     }
 
     private Double findBestConversionRate(String from, String to) {
-        return DijkstraAlgorithm.findBestRate(graph.getCurrencyRateMap(), from, to);
+        return BRD.findBestRate(graph.getCurrencyRateMap(), from, to);
     }
 }

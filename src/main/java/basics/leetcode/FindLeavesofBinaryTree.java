@@ -1,7 +1,10 @@
 package basics.leetcode;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Project Name : Leetcode
@@ -67,4 +70,41 @@ public class FindLeavesofBinaryTree {
         root.right = null;
         return level;
     }
+
+    public List<List<Integer>> getLeaves(TreeNode root){
+
+        Map<Integer, List<Integer>> levelMap = new HashMap<>();
+        addResult(root, levelMap);
+        List<List<Integer>> resultList = new ArrayList<>(levelMap.values());
+        return resultList;
+    }
+
+    private int addResult(TreeNode root,  Map<Integer, List<Integer>> levelMap) {
+        if(root == null){
+            return -1;
+        }
+        int level = Math.max(addResult(root.left,levelMap), addResult(root.right, levelMap))+1;
+        if(levelMap.containsKey(level)){
+            levelMap.get(level).add(root.val);
+        }
+        else{
+            List<Integer> levelList = new ArrayList<>();
+            levelList.add(root.val);
+            levelMap.put(level, levelList);
+        }
+        return level;
+    }
+
+
+    public static void main(String[] args) {
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.left = new TreeNode(2);
+        treeNode.right = new TreeNode(3);
+        treeNode.left.left = new TreeNode(4);
+        treeNode.left.right = new TreeNode(5);
+        FindLeavesofBinaryTree flob= new FindLeavesofBinaryTree();
+        System.out.println(flob.getLeaves(treeNode));
+    }
+
+
 }

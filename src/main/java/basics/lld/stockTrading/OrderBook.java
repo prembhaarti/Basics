@@ -3,12 +3,12 @@ package basics.lld.stockTrading;
 import java.util.PriorityQueue;
 
 public class OrderBook {
-    private final PriorityQueue<StockOrder> buyOrders;
-    private final PriorityQueue<StockOrder> sellOrders;
+    private final PriorityQueue<StockOrder> bo;
+    private final PriorityQueue<StockOrder> so;
 
     public OrderBook() {
-        buyOrders = new PriorityQueue<>((a, b) -> b.compareTo(a)); // Max Heap for BUY
-        sellOrders = new PriorityQueue<>(StockOrder::compareTo); // Min Heap for SELL
+        bo = new PriorityQueue<>((a, b) -> b.compareTo(a)); // Max Heap for BUY
+        so = new PriorityQueue<>(StockOrder::compareTo); // Min Heap for SELL
     }
 
     public void placeOrder(StockOrder order) {
@@ -20,8 +20,8 @@ public class OrderBook {
     }
 
     private void matchBuyOrder(StockOrder buyOrder) {
-        while (!sellOrders.isEmpty() && sellOrders.peek().getPrice() <= buyOrder.getPrice()) {
-            StockOrder sellOrder = sellOrders.poll();
+        while (!so.isEmpty() && so.peek().getPrice() <= buyOrder.getPrice()) {
+            StockOrder sellOrder = so.poll();
             int tradeQuantity = Math.min(buyOrder.getQuantity(), sellOrder.getQuantity());
 
             System.out.println("TRADE EXECUTED: " + tradeQuantity + " shares @ $" + sellOrder.getPrice());
@@ -29,15 +29,15 @@ public class OrderBook {
             buyOrder.reduceQuantity(tradeQuantity);
             sellOrder.reduceQuantity(tradeQuantity);
 
-            if (sellOrder.getQuantity() > 0) sellOrders.offer(sellOrder);
+            if (sellOrder.getQuantity() > 0) so.offer(sellOrder);
             if (buyOrder.getQuantity() == 0) return;
         }
-        buyOrders.offer(buyOrder);
+        bo.offer(buyOrder);
     }
 
     private void matchSellOrder(StockOrder sellOrder) {
-        while (!buyOrders.isEmpty() && buyOrders.peek().getPrice() >= sellOrder.getPrice()) {
-            StockOrder buyOrder = buyOrders.poll();
+        while (!bo.isEmpty() && bo.peek().getPrice() >= sellOrder.getPrice()) {
+            StockOrder buyOrder = bo.poll();
             int tradeQuantity = Math.min(buyOrder.getQuantity(), sellOrder.getQuantity());
 
             System.out.println("TRADE EXECUTED: " + tradeQuantity + " shares @ $" + buyOrder.getPrice());
@@ -45,17 +45,17 @@ public class OrderBook {
             buyOrder.reduceQuantity(tradeQuantity);
             sellOrder.reduceQuantity(tradeQuantity);
 
-            if (buyOrder.getQuantity() > 0) buyOrders.offer(buyOrder);
+            if (buyOrder.getQuantity() > 0) bo.offer(buyOrder);
             if (sellOrder.getQuantity() == 0) return;
         }
-        sellOrders.offer(sellOrder);
+        so.offer(sellOrder);
     }
 
     public void printOrderBook() {
         System.out.println("\n--- Order Book ---");
         System.out.println("BUY ORDERS:");
-        buyOrders.forEach(System.out::println);
+        bo.forEach(System.out::println);
         System.out.println("SELL ORDERS:");
-        sellOrders.forEach(System.out::println);
+        so.forEach(System.out::println);
     }
 }

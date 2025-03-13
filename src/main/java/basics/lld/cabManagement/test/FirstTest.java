@@ -1,4 +1,4 @@
-package test;
+package basics.lld.cabManagement.test;
 
 public class FirstTest {
 

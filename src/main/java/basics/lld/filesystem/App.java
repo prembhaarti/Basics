@@ -13,6 +13,20 @@ public class App {
 
     public static void main(String[] args) {
         FileSystem obj = new FileSystem();
+        for(String command: args){
+            switch (command){
+                case "FileSystem":
+                    obj = new FileSystem();
+                    break;
+                case "ls":
+                    obj.ls("");
+            }
+        }
+
+
+
+
+
 //        List<String> param_1 = obj.ls(path);
 //        obj.mkdir(path);
 //        obj.addContentToFile(filePath, content);

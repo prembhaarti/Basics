@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-class DijkstraAlgorithm {
+class BRD {
 
     /**
      * Map<String, Map<String, Double>> currencyRateMap
