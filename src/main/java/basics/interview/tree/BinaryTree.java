@@ -27,7 +27,7 @@ class Node{
     int height;
     int size;
     Color color;
-    
+
     public static Node newNode(int data){
         Node n = new Node();
         n.left = null;
@@ -43,40 +43,25 @@ class Node{
 
 public class BinaryTree {
     public Node addNode(int data, Node head){
-        Node tempHead = head;
-        Node n = Node.newNode(data);
-        if(head == null){
-            head = n;
-            return head;
+        if(head==null){
+            Node node = new Node();
+            node.data = data;
+            return node;
         }
-        Node prev = null;
-        while(head != null){
-            prev = head;
-            if(head.data < data){
-                head = head.right;
-            }else{
-                head = head.left;
-            }
+        if(data<= head.data){
+            head.left = addNode(data, head.left);
+        } else if (data > head.data) {
+            head.right = addNode(data, head.right);
         }
-        if(prev.data < data){
-            prev.right = n;
-        }else{
-            prev.left = n;
-        }
-        return tempHead;
-    }
-    
-    class IntegerRef{
-        int height;
+
+        return head;
     }
     
     public int height(Node root){
-        if(root == null){
+        if(root==null){
             return 0;
         }
-        int leftHeight  = height(root.left);
-        int rightHeight = height(root.right);
-        return Math.max(leftHeight, rightHeight) + 1;
+        return Math.max(height(root.left), height(root.right))+1;
     }
     
     public static void main(String args[]){

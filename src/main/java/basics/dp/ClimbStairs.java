@@ -12,16 +12,16 @@ public class ClimbStairs {
    *
    *  f(n) = f(n-1)+f(n-2)   :: n>=2   n(0)->1 , n(1)->2
    */
-    public int count(int n, int k){
-      int[] stepsCount = new int[n];
+    public int count(int stairs, int k){
+      int[] stepsCount = new int[stairs];
       stepsCount[0]=1;
       stepsCount[1]=2;
 
-      for(int i=2;i<n;i++) {
+      for(int i=2;i<stairs;i++) {
         stepsCount[i]=stepsCount[i-2]+stepsCount[i-1];
       }
 
-      return stepsCount[n-1];
+      return stepsCount[stairs-1];
     }
 
   public static void main(String[] args) {
@@ -30,3 +30,5 @@ public class ClimbStairs {
   }
 
 }
+
+
