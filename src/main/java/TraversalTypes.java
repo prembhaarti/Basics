@@ -1,14 +1,10 @@
-import java.util.PriorityQueue;
+import basics.interviews.TreeNode;
+
+import java.util.*;
 
 public class TraversalTypes {
-
+    private Map<Integer, List<Integer>> graph = new HashMap<>();
     public static void main(String[] args) {
-        System.out.println("");
-
-
-
-
-
     }
 
     public void traverse2DMatrix(int[][] matrix){
@@ -28,13 +24,29 @@ public class TraversalTypes {
                 !visited[row][col]);
     }
 
-    public int binarySearch(int input[], int search) {
+    public void traverse2DMatrix1ToNChar(int[][] matrix){
+        for(int r=0; r<matrix.length;r++){
+            for(int c=0;r+c<matrix.length;c++){
+                if(r<=1){
+                    matrix[c][r+c]=1;
+                }
+                else{
+                    if(matrix[c+1][r+c-1]==1){
+                        matrix[c][r+c]=1;
+                    }
+                }
+            }
+        }
+    }
+
+
+    public int binarySearch(int input[], int element) {
         int low = 0, high = input.length - 1, mid;
         while (low <= high) {
             mid = low + ((high - low) / 2);
-            if (input[mid] == search) {
+            if (input[mid] == element) {
                 return mid;
-            } else if (input[mid] < search) {
+            } else if (input[mid] < element) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
@@ -74,6 +86,98 @@ public class TraversalTypes {
         return cost;
     }
 
+    public void bfs(int start) {
+        Set<Integer> visited = new HashSet<>();
+        Queue<Integer> queue = new LinkedList<>();
+        visited.add(start);
+        queue.add(start);
+
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            System.out.print(node + " ");
+            for (int neighbor : graph.get(node)) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
+                    queue.offer(neighbor);
+                }
+            }
+        }
+    }
+
+    public void dfsRecursive(int node, Set<Integer> visited) {
+        visited.add(node);
+        System.out.print(node + " ");
+        for (int neighbor : graph.get(node)) {
+            if (!visited.contains(neighbor)) {
+                dfsRecursive(neighbor, visited);
+            }
+        }
+    }
+
+    public void inorder(TreeNode root) {
+        if (root == null) return;
+        inorder(root.left);
+        System.out.print(root.val + " ");
+        inorder(root.right);
+    }
+
+    public void preOrder(TreeNode root) {
+        if (root == null) return;
+        System.out.print(root.val + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    public void postOrder(TreeNode root) {
+        if (root == null) return;
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.print(root.val + " ");
+    }
+
+    public void levelOrder(TreeNode root) {
+        if (root == null) return;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size(); // for level-wise printing
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode node = queue.poll();
+                System.out.print(node.val + " ");
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+            }
+        }
+    }
+    //["", "a", "ab", "abc", "ac", "b", "bc", "c"]
+    private void backtrackStringCombination(String str, int index, StringBuilder path, List<String> result) {
+        result.add(path.toString());
+        for (int i = index; i < str.length(); i++) {
+            path.append(str.charAt(i));//choose
+            backtrackStringCombination(str, i + 1, path, result);//explore
+            path.deleteCharAt(path.length() - 1);//backtrack
+        }
+    }
+
+    // ["abc","acb","bac","bca","cba","cab"]
+    private void backtrackPermultation(char[] chars, int index, List<String> result) {
+        if (index == chars.length) {
+            result.add(new String(chars));
+            return;
+        }
+        for (int i = index; i < chars.length; i++) {
+            swap(chars, index, i); // choose
+            backtrackPermultation(chars, index + 1, result); // explore
+            swap(chars, index, i); // un-choose (backtrack)
+        }
+    }
+
+    private void swap(char[] chars, int i, int j) {
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+    }
 }
 //
 
