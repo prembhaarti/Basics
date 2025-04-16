@@ -40,10 +40,8 @@ public class BankAccount {
     public void deposit(double amount) {
         lock.lock();
         try {
-            if (amount > 0) {
                 balance += amount;
                 System.out.println("Deposited $" + amount + " into " + accountNumber);
-            }
         } finally {
             lock.unlock();
         }

@@ -23,22 +23,22 @@ import java.util.PriorityQueue;
  */
 public class MinRopCost {
 
-  PriorityQueue<Integer> heap = new PriorityQueue<>();
+  PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
   public int ropeBindingCost(int[] ropesLen){
     if(ropesLen.length<2){
       return 0;
     }
     for(int i=0; i<ropesLen.length;i++){
-      heap.add(ropesLen[i]);
+      minHeap.add(ropesLen[i]);
     }
     int cost=0;
-    while(heap.size()!=1){
-      int first=heap.poll();
-      int second=heap.poll();
+    while(minHeap.size()!=1){
+      int first= minHeap.poll();
+      int second= minHeap.poll();
       int sum=first+second;
       cost+=sum;
-      heap.offer(sum);
+      minHeap.offer(sum);
     }
     return cost;
   }

@@ -16,16 +16,19 @@ public class ReverseString {
      * @param s
      * @return
      */
-    public static String reverseString(String s) {
-        if (s == null || s.length() == 0) return s;
-        int left = 0;
-        int right = s.length() - 1;
-        char[] str = s.toCharArray();
+
+    public static void main(String[] args) {
+        String str = "hello";
+        reverseString(str.toCharArray());
+        System.out.println(str);
+    }
+    public static void reverseString(char[] s) {
+        if (s == null || s.length == 0) return;
+        int left = 0, right = s.length - 1;
         while (left < right) {
-            char temp = str[left];
-            str[left++] = str[right];
-            str[right--] = temp;
+            char temp = s[left];
+            s[left++] = s[right];
+            s[right--] = temp;
         }
-        return new String(str);
     }
 }

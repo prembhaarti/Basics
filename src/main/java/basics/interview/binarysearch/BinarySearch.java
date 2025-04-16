@@ -6,9 +6,7 @@ package basics.interview.binarysearch;
 public class BinarySearch {
 
     public int search(final int input[], int search) {
-        int low = 0;
-        int high = input.length - 1;
-        int mid;
+        int low = 0, high = input.length - 1, mid;
         while (low <= high) {
             mid = low + ((high - low) / 2);
             if (input[mid] == search) {
